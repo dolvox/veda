@@ -2,17 +2,19 @@
    VARIÁVEIS E IDENTIDADE VISUAL
    ========================================== */
 :root {
-    --bg-dark: #09090b;          /* Fundo quase preto */
-    --primary-purple: #8b5cf6;   /* Roxo/lilás vibrante */
-    --text-light: #f8fafc;       /* Branco/cinza claro para leitura em bg escuro */
-    --bg-light: #f1f5f9;         /* Cinza muito claro para seções claras */
-    --text-dark: #1e293b;        /* Grafite escuro para leitura em bg claro */
+    --bg-dark: #09090b;          
+    --primary-purple: #8b5cf6;   
+    --primary-purple-hover: #7c3aed;
+    --text-light: #f8fafc;       
+    --bg-light: #f1f5f9;         
+    --text-dark: #1e293b;        
     
     --font-primary: 'Poppins', sans-serif;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==========================================
-   RESET BÁSICO
+   RESET E CONFIGURAÇÕES DO BODY (Mantidos)
    ========================================== */
 * {
     margin: 0;
@@ -30,8 +32,197 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-light);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Classes utilitárias futuras podem vir aqui */
+/* ==========================================
+   COMPONENTE: TOGGLE ALTERNADOR
+   ========================================== */
+.toggle-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 24px 20px 10px 20px;
+    z-index: 10;
+}
+
+.toggle-container {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px;
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 10px 22px;
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    white-space: nowrap;
+}
+
+.toggle-btn:hover {
+    color: var(--text-light);
+}
+
+.toggle-btn.active {
+    background: var(--primary-purple);
+    color: var(--text-light);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+/* ==========================================
+   LAYOUT: HERO SECTION (MOBILE-FIRST)
+   ========================================== */
+.hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 20px 24px 40px 24px;
+}
+
+.hero-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-text-anim-wrapper {
+    will-change: transform, opacity;
+}
+
+.hero-content h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.hero-content p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    font-weight: 400;
+}
+
+/* Botão de Ação (Foco no polegar no Mobile) */
+.btn-cta {
+    background: var(--primary-purple);
+    color: var(--text-light);
+    border: none;
+    padding: 18px 32px;
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 14px;
+    cursor: pointer;
+    width: 100%; /* Grande no mobile */
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+}
+
+.btn-cta:hover {
+    background: var(--primary-purple-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(139, 92, 246, 0.5);
+}
+
+/* Espaço reservado para a Imagem/Mockup */
+.hero-visual {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visual-gradient-placeholder {
+    width: 100%;
+    height: 280px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(9, 9, 11, 0.8) 100%);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.visual-glow {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: var(--primary-purple);
+    filter: blur(80px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+}
+
+/* ==========================================
+   RESPONSIVIDADE: MEDIA QUERY (DESKTOP)
+   ========================================== */
+@media (min-width: 1024px) {
+    .toggle-wrapper {
+        padding: 40px 40px 0 40px;
+    }
+
+    .hero {
+        padding: 60px 40px;
+    }
+
+    .hero-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 80px;
+    }
+
+    .hero-content {
+        width: 50%;
+        text-align: left;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 24px;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+    }
+
+    .btn-cta {
+        width: max-content; /* Botão tamanho normal no desktop */
+        padding: 16px 40px;
+    }
+
+    .hero-visual {
+        width: 50%;
+        height: 100%;
+    }
+
+    .visual-gradient-placeholder {
+        height: 500px; /* Maior e imponente no desktop */
+    }
+}
