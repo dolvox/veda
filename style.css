@@ -1,0 +1,37 @@
+/* ==========================================
+   VARIÁVEIS E IDENTIDADE VISUAL
+   ========================================== */
+:root {
+    --bg-dark: #09090b;          /* Fundo quase preto */
+    --primary-purple: #8b5cf6;   /* Roxo/lilás vibrante */
+    --text-light: #f8fafc;       /* Branco/cinza claro para leitura em bg escuro */
+    --bg-light: #f1f5f9;         /* Cinza muito claro para seções claras */
+    --text-dark: #1e293b;        /* Grafite escuro para leitura em bg claro */
+    
+    --font-primary: 'Poppins', sans-serif;
+}
+
+/* ==========================================
+   RESET BÁSICO
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Classes utilitárias futuras podem vir aqui */
