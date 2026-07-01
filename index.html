@@ -3,45 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicativo UGC | Gamificação de Influência</title>
+    <title>Plast | Landing Page</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #05010d; /* Fundo bem escuro com tom roxo */
+            --primary-purple: #9d71fa; /* Roxo vibrante neon */
+            --text-light: #ffffff;
+            --text-muted: #a19bb0;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
 
-    <link rel="stylesheet" href="styles.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* ================= HEADER / NAVBAR ================= */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            letter-spacing: -1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-light);
+        }
+
+        /* Toggle Button no Header */
+        .header-toggle {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 5px;
+            position: relative;
+        }
+
+        .toggle-option {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 1;
+            color: rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-option.active {
+            color: #fff;
+        }
+
+        .toggle-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            display: inline-block;
+        }
+
+        .toggle-option.active .toggle-indicator {
+            background: #fde047; /* Ponto amarelo da imagem */
+            box-shadow: 0 0 10px #fde047;
+        }
+
+        /* Botão Entrar Navbar */
+        .btn-login {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+            flex: 1;
+            gap: 40px;
+        }
+
+        /* Coluna da Esquerda */
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(157, 113, 250, 0.1);
+            border: 1px solid rgba(157, 113, 250, 0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            color: var(--primary-purple);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .highlight {
+            color: var(--primary-purple);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .hero-content p .highlight-muted {
+            color: #d8b4fe; /* Um roxo mais suave pro texto */
+            font-weight: 500;
+        }
+
+        /* Botões Hero */
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Coluna da Direita (Visual / Neon) */
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .neon-frame {
+            width: 450px;
+            height: 500px;
+            border-radius: 24px;
+            border: 4px solid var(--primary-purple);
+            box-shadow: 0 0 40px rgba(157, 113, 250, 0.4), inset 0 0 20px rgba(157, 113, 250, 0.3);
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=600&auto=format&fit=crop') center/cover no-repeat; /* Imagem placeholder parecida com a sua */
+        }
+
+        /* Card Flutuante */
+        .floating-card {
+            position: absolute;
+            bottom: -30px;
+            left: -40px;
+            background: rgba(15, 10, 25, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(157, 113, 250, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-purple);
+            font-size: 1.5rem;
+        }
+
+        .card-text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .card-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsividade Básica */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+            .hero-content h1 { font-size: 2.5rem; }
+            .neon-frame { width: 100%; height: 400px; margin-top: 40px; }
+            .floating-card { left: 10px; bottom: 10px; }
+            nav, .header-toggle { display: none; } /* Esconde nav no mobile por enquanto */
+        }
+    </style>
 </head>
 <body>
 
-    <div class="toggle-wrapper">
-        <div class="toggle-container">
-            <button class="toggle-btn active" data-target="criador">Para Criadores</button>
-            <button class="toggle-btn" data-target="empresa">Para Empresas</button>
+    <header>
+        <div class="logo">Plast</div>
+        
+        <nav>
+            <a href="#">Recursos</a>
+            <a href="#">Soluções</a>
+            <a href="#">Preços</a>
+            <a href="#">Cases</a>
+            <a href="#">Blog</a>
+        </nav>
+
+        <div class="header-toggle">
+            <div class="toggle-option active">
+                <span class="toggle-indicator"></span> Empresa
+            </div>
+            <div class="toggle-option">
+                <span class="toggle-indicator" style="background: transparent;"></span> criador
+            </div>
         </div>
-    </div>
+
+        <button class="btn-login">Entra / cadastrar</button>
+    </header>
 
     <main class="hero">
-        <div class="hero-container">
+        
+        <div class="hero-content">
+            <div class="badge">
+                👥 Conecte. Colabore. Cresça.
+            </div>
+
+            <h1>Se <span class="highlight">conecte</span> com diversos criativos e <span class="highlight">influencers</span> da sua <span class="highlight">cidade</span>.</h1>
             
-            <div class="hero-content">
-                <div class="hero-text-anim-wrapper">
-                    <h1 id="hero-title">O jogo mudou. Seu dia a dia agora é uma Missão.</h1>
-                    <p id="hero-subtitle">Crie conteúdos reais para marcas locais, evolua seu avatar e ganhe recompensas reais.</p>
-                </div>
-                <button id="hero-cta" class="btn-cta">Começar Jornada</button>
-            </div>
+            <p>Aumente sua escala de <span class="highlight-muted">branding</span> da empresa em toda a cidade e leve sua marca para mais pessoas, todos os dias.</p>
 
-            <div class="hero-visual">
-                <div class="visual-gradient-placeholder" id="hero-visual-bg">
-                    <div class="visual-glow"></div>
-                </div>
+            <div class="hero-buttons">
+                <button class="btn-primary">Começar agora &rarr;</button>
+                <button class="btn-secondary">Saiba mais</button>
             </div>
-
         </div>
+
+        <div class="hero-visual">
+            <div class="neon-frame">
+                
+                <div class="floating-card">
+                    <div class="card-icon">📈</div>
+                    <div class="card-text">
+                        <h4>Mais visibilidade</h4>
+                        <p>+ alcance • + conexões • + resultados</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </main>
 
-    <script src="script.js"></script>
 </body>
 </html>
