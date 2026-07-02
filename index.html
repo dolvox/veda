@@ -17,7 +17,7 @@
            ========================================== */
         :root {
             --bg-dark: #05010d; 
-            --primary-purple: #9d71fa; 
+            --primary-color: #facc15; /* Amarelo Vibrante / Neon */
             --text-light: #ffffff;
             --text-muted: #a19bb0;
             --border-color: rgba(255, 255, 255, 0.1);
@@ -41,7 +41,7 @@
         }
 
         /* ==========================================
-           HEADER / NAVBAR (RESPONSIVO)
+           HEADER / NAVBAR
            ========================================== */
         header {
             display: flex;
@@ -56,7 +56,7 @@
         .logo {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-purple);
+            color: var(--primary-color); /* Logo amarela */
             letter-spacing: -1px;
         }
 
@@ -77,7 +77,7 @@
             color: var(--text-light);
         }
 
-        /* Toggle Centralizado Premium */
+        /* Toggle Centralizado (Alteração 1) */
         .header-toggle {
             display: flex;
             align-items: center;
@@ -89,33 +89,21 @@
         }
 
         .toggle-option {
-            padding: 8px 20px;
+            padding: 8px 24px;
             font-size: 0.85rem;
             font-weight: 600;
             color: rgba(255, 255, 255, 0.4);
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
             border-radius: 50px;
             transition: var(--transition-smooth);
         }
 
         .toggle-option.active {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .toggle-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: transparent;
-            transition: var(--transition-smooth);
-        }
-
-        .toggle-option.active .toggle-indicator {
-            background: #fde047; /* Ponto amarelo da imagem */
-            box-shadow: 0 0 10px #fde047;
+            color: var(--bg-dark); /* Texto escuro no fundo claro */
+            background: var(--primary-color); /* Fundo preenchido com a cor primária */
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.3); /* Brilho sutil no botão */
         }
 
         .btn-login {
@@ -134,11 +122,11 @@
         }
 
         /* ==========================================
-           HERO SECTION (MOBILE-FIRST)
+           HERO SECTION
            ========================================== */
         .hero {
             display: flex;
-            flex-direction: column-reverse; /* No Mobile, o visual pode ir para baixo ou cima. Vamos deixar o texto primeiro */
+            flex-direction: column-reverse;
             padding: 40px 24px;
             max-width: 1300px;
             margin: 0 auto;
@@ -147,7 +135,6 @@
             width: 100%;
         }
 
-        /* Coluna de Conteúdo */
         .hero-content {
             width: 100%;
             display: flex;
@@ -159,11 +146,11 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(157, 113, 250, 0.1);
-            border: 1px solid rgba(157, 113, 250, 0.2);
+            background: rgba(250, 204, 21, 0.1); /* Fundo amarelo transparente */
+            border: 1px solid rgba(250, 204, 21, 0.2);
             padding: 8px 16px;
             border-radius: 50px;
-            color: var(--primary-purple);
+            color: var(--primary-color);
             font-size: 0.85rem;
             font-weight: 500;
             margin-bottom: 24px;
@@ -183,7 +170,7 @@
         }
 
         .highlight {
-            color: var(--primary-purple);
+            color: var(--primary-color); /* Textos em destaque amarelo */
         }
 
         .hero-content p {
@@ -194,20 +181,20 @@
         }
 
         .highlight-muted {
-            color: #d8b4fe;
+            color: #fde047; /* Amarelo um pouco mais suave pro texto de apoio */
             font-weight: 500;
         }
 
         /* Botões do Hero */
         .hero-buttons {
             display: flex;
-            flex-direction: column; /* Botões empilhados no mobile para clique fácil */
+            flex-direction: column;
             gap: 12px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-            color: white;
+            background: var(--primary-color);
+            color: var(--bg-dark); /* Texto escuro para dar leitura no fundo amarelo */
             border: none;
             padding: 16px 28px;
             border-radius: 12px;
@@ -219,12 +206,12 @@
             justify-content: center;
             gap: 8px;
             transition: var(--transition-smooth);
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+            box-shadow: 0 6px 20px rgba(250, 204, 21, 0.5);
         }
 
         .btn-secondary {
@@ -252,13 +239,14 @@
             position: relative;
         }
 
+        /* Moldura e Brilho Neon (Alteração 3) */
         .neon-frame {
             width: 100%;
             max-width: 450px;
             height: 350px;
             border-radius: 24px;
-            border: 3px solid var(--primary-purple);
-            box-shadow: 0 0 30px rgba(157, 113, 250, 0.3), inset 0 0 15px rgba(157, 113, 250, 0.2);
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 30px rgba(250, 204, 21, 0.3), inset 0 0 15px rgba(250, 204, 21, 0.2);
             position: relative;
             background: url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=600&auto=format&fit=crop') center/cover no-repeat;
             transition: var(--transition-smooth);
@@ -284,12 +272,12 @@
         .card-icon {
             width: 40px;
             height: 40px;
-            background: rgba(157, 113, 250, 0.2);
+            background: rgba(250, 204, 21, 0.2); /* Fundo do ícone amarelo transparente */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-purple);
+            color: var(--primary-color);
             font-size: 1.2rem;
         }
 
@@ -299,13 +287,15 @@
             margin-bottom: 2px;
         }
 
+        /* Correção da quebra de linha (Alteração 2) */
         .card-text p {
             font-size: 0.75rem;
             color: var(--text-muted);
+            white-space: nowrap; /* Impede que o texto quebre para a linha de baixo */
         }
 
         /* ==========================================
-           MEDIA QUERIES (DESKTOP / INTERMEDIÁRIO)
+           MEDIA QUERIES (DESKTOP)
            ========================================== */
         @media (min-width: 1024px) {
             header {
@@ -313,7 +303,7 @@
             }
 
             .hero {
-                flex-direction: row; /* Lado a lado no computador */
+                flex-direction: row; 
                 padding: 60px 80px;
                 gap: 80px;
                 align-items: center;
@@ -329,7 +319,7 @@
             }
 
             .hero-buttons {
-                flex-direction: row; /* Botões lado a lado no PC */
+                flex-direction: row; 
             }
 
             .btn-primary, .btn-secondary {
@@ -354,10 +344,9 @@
             }
         }
 
-        /* Esconder itens do menu no mobile clássico se necessário */
         @media (max-width: 768px) {
             nav {
-                display: none; /* Em passos futuros faremos o menu hambúrguer */
+                display: none; 
             }
             header {
                 justify-content: center;
@@ -375,18 +364,12 @@
         <nav>
             <a href="#">Recursos</a>
             <a href="#">Soluções</a>
-            <a href="#">Preços</a>
-            <a href="#">Cases</a>
             <a href="#">Blog</a>
         </nav>
 
         <div class="header-toggle" id="mode-toggle">
-            <div class="toggle-option active" data-mode="empresa">
-                <span class="toggle-indicator"></span> Empresa
-            </div>
-            <div class="toggle-option" data-mode="criador">
-                <span class="toggle-indicator"></span> criador
-            </div>
+            <div class="toggle-option active" data-mode="empresa">Empresa</div>
+            <div class="toggle-option" data-mode="criador">Criador</div>
         </div>
 
         <button class="btn-login">Entra / cadastrar</button>
@@ -414,7 +397,7 @@
             <div class="neon-frame" id="hero-image-frame">
                 
                 <div class="floating-card" id="hero-floating-card">
-                    <div class="card-icon" id="card-icon"> Northampton 📈 </div>
+                    <div class="card-icon" id="card-icon">📈</div>
                     <div class="card-text">
                         <h4 id="card-title">Mais visibilidade</h4>
                         <p id="card-subtitle">+ alcance • + conexões • + resultados</p>
@@ -429,7 +412,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
-            // Banco de dados de conteúdo para a alternância rápida
+            // Ambos os modos agora mantêm a identidade amarela conforme solicitado
             const data = {
                 empresa: {
                     badge: "👥 Conecte. Colabore. Cresça.",
@@ -440,18 +423,18 @@
                     cardTitle: "Mais visibilidade",
                     cardSub: "+ alcance • + conexões • + resultados",
                     image: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=600&auto=format&fit=crop",
-                    color: "#9d71fa"
+                    color: "#facc15" 
                 },
                 criador: {
-                    badge: "🎮 jogue. Crie. Ganhe.",
+                    badge: "🎮 Jogue. Crie. Ganhe.",
                     title: "O <span class='highlight'>jogo mudou</span>. Seu dia a dia agora é uma <span class='highlight'>Missão</span>.",
                     subtitle: "Crie conteúdos reais para marcas locais, evolua seu <span class='highlight-muted'>avatar</span> e ganhe recompensas reais em dinheiro ou prêmios.",
                     btnText: "Começar Jornada &rarr;",
                     cardIcon: "🏆",
                     cardTitle: "Sua Jornada Gamer",
                     cardSub: "Complete missões • Ganhe XP • Resgate Prêmios",
-                    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop", // Imagem pegada gamer/criador
-                    color: "#ec4899" // Rosa/Roxo para dar destaque diferente ao criador
+                    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop", 
+                    color: "#facc15" 
                 }
             };
 
@@ -469,21 +452,17 @@
                 option.addEventListener("click", () => {
                     const mode = option.getAttribute("data-mode");
                     
-                    // Se já estiver ativo, não faz nada
                     if(option.classList.contains("active")) return;
 
-                    // Alterna classes ativas no botão
                     document.querySelectorAll(".toggle-option").forEach(opt => opt.classList.remove("active"));
                     option.classList.add("active");
 
-                    // Transição Suave usando GSAP para os textos e cards
                     gsap.to(["#hero-text-block", "#hero-badge", "#hero-floating-card"], {
                         opacity: 0,
                         y: 10,
                         duration: 0.2,
                         stagger: 0.05,
                         onComplete: () => {
-                            // Aplica novos textos
                             heroBadge.textContent = data[mode].badge;
                             heroTitle.innerHTML = data[mode].title;
                             heroSubtitle.innerHTML = data[mode].subtitle;
@@ -493,10 +472,8 @@
                             cardSubtitle.textContent = data[mode].cardSub;
                             imageFrame.style.backgroundImage = `url('${data[mode].image}')`;
                             
-                            // Ajusta a cor do tema dinamicamente
-                            document.documentElement.style.setProperty('--primary-purple', data[mode].color);
+                            document.documentElement.style.setProperty('--primary-color', data[mode].color);
 
-                            // Animação de volta (Fade-In)
                             gsap.to(["#hero-text-block", "#hero-badge", "#hero-floating-card"], {
                                 opacity: 1,
                                 y: 0,
