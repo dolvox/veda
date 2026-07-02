@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plast | Landing Page</title>
 
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Biblioteca de Animação GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
     <style>
@@ -54,11 +56,15 @@
             gap: 20px;
         }
 
+        /* Logo com Degradê (Nova Alteração) */
         .logo {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-purple); /* Logotipo Roxo Original */
             letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--primary-purple) 30%, var(--primary-yellow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
 
         nav {
@@ -78,7 +84,7 @@
             color: var(--text-light);
         }
 
-        /* Toggle Avançado (Laranja 2) */
+        /* Toggle Avançado */
         .header-toggle {
             display: flex;
             align-items: center;
@@ -93,7 +99,6 @@
             user-select: none;
         }
 
-        /* Pílula de fundo deslizante com degradê amarelo */
         .toggle-active-pill {
             position: absolute;
             top: 2px;
@@ -109,7 +114,6 @@
             z-index: 1;
         }
 
-        /* A bolinha indicadora dentro do amarelo */
         .toggle-active-pill::before {
             content: '';
             width: 8px;
@@ -119,7 +123,6 @@
             box-shadow: 0 0 10px #ffffff, 0 0 5px var(--primary-yellow);
         }
 
-        /* Estado ativo do criador: desliza para a direita e inverte o degradê */
         .header-toggle.criador-active .toggle-active-pill {
             left: 50%;
             background: linear-gradient(270deg, rgba(250, 204, 21, 1) 0%, rgba(250, 204, 21, 0.2) 80%, transparent 100%);
@@ -202,7 +205,6 @@
             justify-content: center;
         }
 
-        /* Tag de cima Roxa */
         .badge {
             display: inline-flex;
             align-items: center;
@@ -230,12 +232,9 @@
             letter-spacing: -1px;
         }
 
-        /* Super Degradê Roxo + Amarelo solicitado */
+        /* Texto em destaque voltou para o Amarelo (Nova Alteração) */
         .highlight {
-            background: linear-gradient(135deg, var(--primary-purple) 40%, var(--primary-yellow) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
+            color: var(--primary-yellow);
         }
 
         .hero-content p {
@@ -250,14 +249,12 @@
             font-weight: 500;
         }
 
-        /* Botões */
         .hero-buttons {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        /* Botão Principal Roxo Original */
         .btn-primary {
             background: var(--primary-purple);
             color: var(--text-light); 
@@ -298,7 +295,6 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* Moldura com Brilho Luminoso Amarelo (Verde 2) */
         .hero-visual {
             width: 100%;
             display: flex;
@@ -318,7 +314,6 @@
             transition: var(--transition-smooth);
         }
 
-        /* Card Flutuante Corrigido para não quebrar/vazar (Laranja 1) */
         .floating-card {
             position: absolute;
             bottom: -20px;
@@ -361,7 +356,6 @@
             color: #ffffff;
         }
 
-        /* Texto alinhado de forma segura sem estourar as caixas */
         .card-text p {
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -434,6 +428,7 @@
 </head>
 <body>
 
+    <!-- CABEÇALHO -->
     <header>
         <div class="logo">Plast</div>
         
@@ -443,18 +438,21 @@
             <a href="#">Blog</a>
         </nav>
 
+        <!-- Alternador Premium com Animação -->
         <div class="header-toggle" id="mode-toggle">
             <div class="toggle-active-pill"></div>
             <div class="toggle-option active" data-mode="empresa">Empresa</div>
             <div class="toggle-option" data-mode="criador">Criador</div>
         </div>
 
+        <!-- Autenticação Corrigida -->
         <div class="auth-container">
             <button class="btn-login">Login</button>
             <button class="btn-register">Cadastrar</button>
         </div>
     </header>
 
+    <!-- PRIMEIRA DOBRA (HERO) -->
     <main class="hero">
         
         <div class="hero-content">
@@ -489,6 +487,7 @@
 
     </main>
 
+    <!-- INTERATIVIDADE SCRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
