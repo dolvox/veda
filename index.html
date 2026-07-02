@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plast | Landing Page</title>
 
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Biblioteca de Animação GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
     <style>
@@ -19,8 +17,8 @@
            ========================================== */
         :root {
             --bg-dark: #05010d; 
-            --primary-purple: #9d71fa; /* Roxo Original (Roxa 1, 2, 3) */
-            --primary-yellow: #facc15; /* Amarelo Neon (Verde 2) */
+            --primary-purple: #9d71fa; /* Roxo Premium Plast */
+            --primary-yellow: #facc15; /* Amarelo Neon para Brilhos e Detalhes */
             --text-light: #ffffff;
             --text-muted: #a19bb0;
             --border-color: rgba(255, 255, 255, 0.1);
@@ -59,7 +57,7 @@
         .logo {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-purple); /* Retornado para o Roxo (Roxa 2) */
+            color: var(--primary-purple); /* Logotipo Roxo Original */
             letter-spacing: -1px;
         }
 
@@ -80,7 +78,7 @@
             color: var(--text-light);
         }
 
-        /* Toggle Avançado Reconstruído (Laranja 2) */
+        /* Toggle Avançado (Laranja 2) */
         .header-toggle {
             display: flex;
             align-items: center;
@@ -95,7 +93,7 @@
             user-select: none;
         }
 
-        /* Pílula de fundo deslizante com degradê que acaba no meio */
+        /* Pílula de fundo deslizante com degradê amarelo */
         .toggle-active-pill {
             position: absolute;
             top: 2px;
@@ -103,7 +101,7 @@
             width: calc(50% - 2px);
             height: calc(100% - 4px);
             border-radius: 50px;
-            background: linear-gradient(90deg, rgba(250, 204, 21, 0.9) 0%, rgba(250, 204, 21, 0.15) 75%, transparent 100%);
+            background: linear-gradient(90deg, rgba(250, 204, 21, 1) 0%, rgba(250, 204, 21, 0.2) 80%, transparent 100%);
             transition: var(--transition-smooth);
             display: flex;
             align-items: center;
@@ -111,20 +109,20 @@
             z-index: 1;
         }
 
-        /* A Bolinha iluminada interna */
+        /* A bolinha indicadora dentro do amarelo */
         .toggle-active-pill::before {
             content: '';
-            width: 7px;
-            height: 7px;
+            width: 8px;
+            height: 8px;
             background: #ffffff;
             border-radius: 50%;
             box-shadow: 0 0 10px #ffffff, 0 0 5px var(--primary-yellow);
         }
 
-        /* Estado ativo do criador: desliza e inverte o degradê */
+        /* Estado ativo do criador: desliza para a direita e inverte o degradê */
         .header-toggle.criador-active .toggle-active-pill {
             left: 50%;
-            background: linear-gradient(270deg, rgba(250, 204, 21, 0.9) 0%, rgba(250, 204, 21, 0.15) 75%, transparent 100%);
+            background: linear-gradient(270deg, rgba(250, 204, 21, 1) 0%, rgba(250, 204, 21, 0.2) 80%, transparent 100%);
             padding-left: 0;
             padding-right: 14px;
             justify-content: flex-end;
@@ -145,7 +143,7 @@
             color: #ffffff;
         }
 
-        /* Área de Auth Separada (Ajuste Rápido) */
+        /* Área de Autenticação Separada */
         .auth-container {
             display: flex;
             align-items: center;
@@ -204,7 +202,7 @@
             justify-content: center;
         }
 
-        /* Tag Superior Roxa (Roxa 3) */
+        /* Tag de cima Roxa */
         .badge {
             display: inline-flex;
             align-items: center;
@@ -232,11 +230,12 @@
             letter-spacing: -1px;
         }
 
-        /* Efeito de Degradê Roxo + Amarelo no Texto (Roxa 2 Bônus) */
+        /* Super Degradê Roxo + Amarelo solicitado */
         .highlight {
-            background: linear-gradient(135deg, var(--primary-purple) 30%, var(--primary-yellow) 100%);
+            background: linear-gradient(135deg, var(--primary-purple) 40%, var(--primary-yellow) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
 
         .hero-content p {
@@ -251,14 +250,14 @@
             font-weight: 500;
         }
 
-        /* Botões do Hero */
+        /* Botões */
         .hero-buttons {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        /* Botão Principal Roxo Original (Roxa 1) */
+        /* Botão Principal Roxo Original */
         .btn-primary {
             background: var(--primary-purple);
             color: var(--text-light); 
@@ -299,7 +298,7 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* Coluna Visual (Neon Amarelo - Verde 2) */
+        /* Moldura com Brilho Luminoso Amarelo (Verde 2) */
         .hero-visual {
             width: 100%;
             display: flex;
@@ -313,13 +312,13 @@
             height: 350px;
             border-radius: 24px;
             border: 3px solid var(--primary-yellow);
-            box-shadow: 0 0 35px rgba(250, 204, 21, 0.35), inset 0 0 15px rgba(250, 204, 21, 0.2);
+            box-shadow: 0 0 35px rgba(250, 204, 21, 0.4), inset 0 0 15px rgba(250, 204, 21, 0.2);
             position: relative;
             background: url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=600&auto=format&fit=crop') center/cover no-repeat;
             transition: var(--transition-smooth);
         }
 
-        /* Card Flutuante Corrigido (Laranja 1) */
+        /* Card Flutuante Corrigido para não quebrar/vazar (Laranja 1) */
         .floating-card {
             position: absolute;
             bottom: -20px;
@@ -334,7 +333,6 @@
             align-items: center;
             gap: 14px;
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
-            overflow: hidden; /* Garante que nada saia do quadrado */
         }
 
         .card-icon {
@@ -354,7 +352,7 @@
             display: flex;
             flex-direction: column;
             gap: 2px;
-            min-width: 0; /* Impede quebras descontroladas em flexbox */
+            overflow: hidden;
         }
 
         .card-text h4 {
@@ -363,12 +361,12 @@
             color: #ffffff;
         }
 
-        /* Texto perfeitamente alinhado e responsivo dentro do bloco */
+        /* Texto alinhado de forma segura sem estourar as caixas */
         .card-text p {
-            font-size: 0.73rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             line-height: 1.3;
-            word-break: break-word; /* Segurança total contra quebras erradas */
+            word-break: break-all;
         }
 
         /* ==========================================
@@ -416,12 +414,8 @@
             .floating-card {
                 left: -35px;
                 right: auto;
-                width: 310px; /* Largura calculada perfeitamente para o texto */
+                width: 315px; 
                 bottom: -25px;
-            }
-            
-            .card-text p {
-                font-size: 0.78rem;
             }
         }
 
@@ -440,34 +434,28 @@
 </head>
 <body>
 
-    <!-- CABEÇALHO -->
     <header>
         <div class="logo">Plast</div>
         
         <nav>
             <a href="#">Recursos</a>
             <a href="#">Soluções</a>
-            <a href="#">Blog</a>
         </nav>
 
-        <!-- Alternador Dinâmico Customizado -->
         <div class="header-toggle" id="mode-toggle">
             <div class="toggle-active-pill"></div>
             <div class="toggle-option active" data-mode="empresa">Empresa</div>
             <div class="toggle-option" data-mode="criador">Criador</div>
         </div>
 
-        <!-- Links de Autenticação Separados -->
         <div class="auth-container">
             <button class="btn-login">Login</button>
             <button class="btn-register">Cadastrar</button>
         </div>
     </header>
 
-    <!-- PRIMEIRA DOBRA (HERO) -->
     <main class="hero">
         
-        <!-- Conteúdo Esquerdo -->
         <div class="hero-content">
             <div class="badge" id="hero-badge">
                 👥 Conecte. Colabore. Cresça.
@@ -484,11 +472,9 @@
             </div>
         </div>
 
-        <!-- Visual Direito -->
         <div class="hero-visual">
             <div class="neon-frame" id="hero-image-frame">
                 
-                <!-- Card Flutuante Segurado Dentro dos Limites -->
                 <div class="floating-card" id="hero-floating-card">
                     <div class="card-icon" id="card-icon">📈</div>
                     <div class="card-text">
@@ -502,7 +488,6 @@
 
     </main>
 
-    <!-- LÓGICA JAVASCRIPT E ANIMAÇÕES -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
@@ -546,18 +531,15 @@
                     
                     if(option.classList.contains("active")) return;
 
-                    // Gerencia classes de texto ativas
                     toggleOptions.forEach(opt => opt.classList.remove("active"));
                     option.classList.add("active");
 
-                    // Controla o movimento e inversão do degradê da pílula (Laranja 2)
                     if (mode === "criador") {
                         modeToggle.classList.add("criador-active");
                     } else {
                         modeToggle.classList.remove("criador-active");
                     }
 
-                    // Transição suave dos conteúdos internos da dobra
                     gsap.to(["#hero-text-block", "#hero-badge", "#hero-floating-card"], {
                         opacity: 0,
                         y: 10,
