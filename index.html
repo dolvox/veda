@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plast | Landing Page</title>
 
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Biblioteca de Animação GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
     <style>
@@ -17,11 +19,12 @@
            ========================================== */
         :root {
             --bg-dark: #05010d; 
-            --primary-color: #facc15; /* Amarelo Vibrante / Neon */
+            --primary-purple: #9d71fa; /* Roxo Original (Roxa 1, 2, 3) */
+            --primary-yellow: #facc15; /* Amarelo Neon (Verde 2) */
             --text-light: #ffffff;
             --text-muted: #a19bb0;
             --border-color: rgba(255, 255, 255, 0.1);
-            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -56,7 +59,7 @@
         .logo {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-color); /* Logo amarela */
+            color: var(--primary-purple); /* Retornado para o Roxo (Roxa 2) */
             letter-spacing: -1px;
         }
 
@@ -77,48 +80,107 @@
             color: var(--text-light);
         }
 
-        /* Toggle Centralizado (Alteração 1) */
+        /* Toggle Avançado Reconstruído (Laranja 2) */
         .header-toggle {
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 50px;
-            padding: 4px;
+            padding: 2px;
+            position: relative;
+            width: 220px;
+            height: 42px;
             cursor: pointer;
+            user-select: none;
+        }
+
+        /* Pílula de fundo deslizante com degradê que acaba no meio */
+        .toggle-active-pill {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: calc(50% - 2px);
+            height: calc(100% - 4px);
+            border-radius: 50px;
+            background: linear-gradient(90deg, rgba(250, 204, 21, 0.9) 0%, rgba(250, 204, 21, 0.15) 75%, transparent 100%);
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            padding-left: 14px;
+            z-index: 1;
+        }
+
+        /* A Bolinha iluminada interna */
+        .toggle-active-pill::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffffff, 0 0 5px var(--primary-yellow);
+        }
+
+        /* Estado ativo do criador: desliza e inverte o degradê */
+        .header-toggle.criador-active .toggle-active-pill {
+            left: 50%;
+            background: linear-gradient(270deg, rgba(250, 204, 21, 0.9) 0%, rgba(250, 204, 21, 0.15) 75%, transparent 100%);
+            padding-left: 0;
+            padding-right: 14px;
+            justify-content: flex-end;
         }
 
         .toggle-option {
-            padding: 8px 24px;
+            flex: 1;
+            text-align: center;
             font-size: 0.85rem;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50px;
-            transition: var(--transition-smooth);
+            color: rgba(255, 255, 255, 0.3);
+            z-index: 2;
+            transition: color 0.3s ease;
+            line-height: 38px;
         }
 
         .toggle-option.active {
-            color: var(--bg-dark); /* Texto escuro no fundo claro */
-            background: var(--primary-color); /* Fundo preenchido com a cor primária */
-            box-shadow: 0 0 15px rgba(250, 204, 21, 0.3); /* Brilho sutil no botão */
+            color: #ffffff;
+        }
+
+        /* Área de Auth Separada (Ajuste Rápido) */
+        .auth-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .btn-login {
             background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .btn-login:hover {
+            color: var(--text-light);
+        }
+
+        .btn-register {
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             color: var(--text-light);
-            padding: 10px 24px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-size: 0.9rem;
+            font-weight: 500;
             cursor: pointer;
             transition: var(--transition-smooth);
         }
 
-        .btn-login:hover {
-            background: rgba(255, 255, 255, 0.05);
+        .btn-register:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         /* ==========================================
@@ -142,15 +204,16 @@
             justify-content: center;
         }
 
+        /* Tag Superior Roxa (Roxa 3) */
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(250, 204, 21, 0.1); /* Fundo amarelo transparente */
-            border: 1px solid rgba(250, 204, 21, 0.2);
+            background: rgba(157, 113, 250, 0.08); 
+            border: 1px solid rgba(157, 113, 250, 0.25);
             padding: 8px 16px;
             border-radius: 50px;
-            color: var(--primary-color);
+            color: var(--primary-purple);
             font-size: 0.85rem;
             font-weight: 500;
             margin-bottom: 24px;
@@ -169,8 +232,11 @@
             letter-spacing: -1px;
         }
 
+        /* Efeito de Degradê Roxo + Amarelo no Texto (Roxa 2 Bônus) */
         .highlight {
-            color: var(--primary-color); /* Textos em destaque amarelo */
+            background: linear-gradient(135deg, var(--primary-purple) 30%, var(--primary-yellow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-content p {
@@ -181,7 +247,7 @@
         }
 
         .highlight-muted {
-            color: #fde047; /* Amarelo um pouco mais suave pro texto de apoio */
+            color: var(--primary-purple);
             font-weight: 500;
         }
 
@@ -192,9 +258,10 @@
             gap: 12px;
         }
 
+        /* Botão Principal Roxo Original (Roxa 1) */
         .btn-primary {
-            background: var(--primary-color);
-            color: var(--bg-dark); /* Texto escuro para dar leitura no fundo amarelo */
+            background: var(--primary-purple);
+            color: var(--text-light); 
             border: none;
             padding: 16px 28px;
             border-radius: 12px;
@@ -206,12 +273,13 @@
             justify-content: center;
             gap: 8px;
             transition: var(--transition-smooth);
-            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+            box-shadow: 0 4px 20px rgba(157, 113, 250, 0.25);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(250, 204, 21, 0.5);
+            box-shadow: 0 6px 25px rgba(157, 113, 250, 0.45);
+            background: #8b5cf6;
         }
 
         .btn-secondary {
@@ -231,7 +299,7 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* Coluna Visual (Neon) */
+        /* Coluna Visual (Neon Amarelo - Verde 2) */
         .hero-visual {
             width: 100%;
             display: flex;
@@ -239,59 +307,68 @@
             position: relative;
         }
 
-        /* Moldura e Brilho Neon (Alteração 3) */
         .neon-frame {
             width: 100%;
             max-width: 450px;
             height: 350px;
             border-radius: 24px;
-            border: 3px solid var(--primary-color);
-            box-shadow: 0 0 30px rgba(250, 204, 21, 0.3), inset 0 0 15px rgba(250, 204, 21, 0.2);
+            border: 3px solid var(--primary-yellow);
+            box-shadow: 0 0 35px rgba(250, 204, 21, 0.35), inset 0 0 15px rgba(250, 204, 21, 0.2);
             position: relative;
             background: url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=600&auto=format&fit=crop') center/cover no-repeat;
             transition: var(--transition-smooth);
         }
 
-        /* Card Flutuante */
+        /* Card Flutuante Corrigido (Laranja 1) */
         .floating-card {
             position: absolute;
-            bottom: -15px;
-            left: 15px;
-            right: 15px;
-            background: rgba(15, 10, 25, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 16px;
+            bottom: -20px;
+            left: 12px;
+            right: 12px;
+            background: rgba(10, 5, 20, 0.9);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px 20px;
             border-radius: 16px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            gap: 14px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+            overflow: hidden; /* Garante que nada saia do quadrado */
         }
 
         .card-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(250, 204, 21, 0.2); /* Fundo do ícone amarelo transparente */
+            width: 38px;
+            height: 38px;
+            background: rgba(250, 204, 21, 0.15); 
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.2rem;
+            color: var(--primary-yellow);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .card-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0; /* Impede quebras descontroladas em flexbox */
         }
 
         .card-text h4 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 2px;
+            color: #ffffff;
         }
 
-        /* Correção da quebra de linha (Alteração 2) */
+        /* Texto perfeitamente alinhado e responsivo dentro do bloco */
         .card-text p {
-            font-size: 0.75rem;
+            font-size: 0.73rem;
             color: var(--text-muted);
-            white-space: nowrap; /* Impede que o texto quebre para a linha de baixo */
+            line-height: 1.3;
+            word-break: break-word; /* Segurança total contra quebras erradas */
         }
 
         /* ==========================================
@@ -337,10 +414,14 @@
             }
 
             .floating-card {
-                left: -40px;
+                left: -35px;
                 right: auto;
-                width: 280px;
-                bottom: -30px;
+                width: 310px; /* Largura calculada perfeitamente para o texto */
+                bottom: -25px;
+            }
+            
+            .card-text p {
+                font-size: 0.78rem;
             }
         }
 
@@ -353,11 +434,13 @@
                 text-align: center;
             }
             .logo { width: 100%; }
+            .auth-container { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
+    <!-- CABEÇALHO -->
     <header>
         <div class="logo">Plast</div>
         
@@ -367,16 +450,24 @@
             <a href="#">Blog</a>
         </nav>
 
+        <!-- Alternador Dinâmico Customizado -->
         <div class="header-toggle" id="mode-toggle">
+            <div class="toggle-active-pill"></div>
             <div class="toggle-option active" data-mode="empresa">Empresa</div>
             <div class="toggle-option" data-mode="criador">Criador</div>
         </div>
 
-        <button class="btn-login">Entra / cadastrar</button>
+        <!-- Links de Autenticação Separados -->
+        <div class="auth-container">
+            <button class="btn-login">Login</button>
+            <button class="btn-register">Cadastrar</button>
+        </div>
     </header>
 
+    <!-- PRIMEIRA DOBRA (HERO) -->
     <main class="hero">
         
+        <!-- Conteúdo Esquerdo -->
         <div class="hero-content">
             <div class="badge" id="hero-badge">
                 👥 Conecte. Colabore. Cresça.
@@ -393,9 +484,11 @@
             </div>
         </div>
 
+        <!-- Visual Direito -->
         <div class="hero-visual">
             <div class="neon-frame" id="hero-image-frame">
                 
+                <!-- Card Flutuante Segurado Dentro dos Limites -->
                 <div class="floating-card" id="hero-floating-card">
                     <div class="card-icon" id="card-icon">📈</div>
                     <div class="card-text">
@@ -409,10 +502,10 @@
 
     </main>
 
+    <!-- LÓGICA JAVASCRIPT E ANIMAÇÕES -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
-            // Ambos os modos agora mantêm a identidade amarela conforme solicitado
             const data = {
                 empresa: {
                     badge: "👥 Conecte. Colabore. Cresça.",
@@ -422,8 +515,7 @@
                     cardIcon: "📈",
                     cardTitle: "Mais visibilidade",
                     cardSub: "+ alcance • + conexões • + resultados",
-                    image: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=600&auto=format&fit=crop",
-                    color: "#facc15" 
+                    image: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=600&auto=format&fit=crop"
                 },
                 criador: {
                     badge: "🎮 Jogue. Crie. Ganhe.",
@@ -433,11 +525,11 @@
                     cardIcon: "🏆",
                     cardTitle: "Sua Jornada Gamer",
                     cardSub: "Complete missões • Ganhe XP • Resgate Prêmios",
-                    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop", 
-                    color: "#facc15" 
+                    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop"
                 }
             };
 
+            const modeToggle = document.getElementById("mode-toggle");
             const toggleOptions = document.querySelectorAll(".toggle-option");
             const heroBadge = document.getElementById("hero-badge");
             const heroTitle = document.getElementById("hero-title");
@@ -454,9 +546,18 @@
                     
                     if(option.classList.contains("active")) return;
 
-                    document.querySelectorAll(".toggle-option").forEach(opt => opt.classList.remove("active"));
+                    // Gerencia classes de texto ativas
+                    toggleOptions.forEach(opt => opt.classList.remove("active"));
                     option.classList.add("active");
 
+                    // Controla o movimento e inversão do degradê da pílula (Laranja 2)
+                    if (mode === "criador") {
+                        modeToggle.classList.add("criador-active");
+                    } else {
+                        modeToggle.classList.remove("criador-active");
+                    }
+
+                    // Transição suave dos conteúdos internos da dobra
                     gsap.to(["#hero-text-block", "#hero-badge", "#hero-floating-card"], {
                         opacity: 0,
                         y: 10,
@@ -471,8 +572,6 @@
                             cardTitle.textContent = data[mode].cardTitle;
                             cardSubtitle.textContent = data[mode].cardSub;
                             imageFrame.style.backgroundImage = `url('${data[mode].image}')`;
-                            
-                            document.documentElement.style.setProperty('--primary-color', data[mode].color);
 
                             gsap.to(["#hero-text-block", "#hero-badge", "#hero-floating-card"], {
                                 opacity: 1,
