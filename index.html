@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plast | Landing Page</title>
 
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Biblioteca de Animação GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
     <style>
@@ -324,7 +326,7 @@
         .pill-image-container {
             width: 100%;
             max-width: 320px;
-            height: 750px; /* AUMENTADO: de 550px para 750px para ficar bem mais comprido */
+            height: 750px; 
             border-radius: 200px;
             overflow: hidden;
             position: relative;
@@ -350,7 +352,7 @@
             transition: var(--transition-smooth);
         }
 
-        /* AJUSTE: BANNER INFERIOR MAIS PARA BAIXO (VERMELHO) */
+        /* AJUSTE: BANNER INFERIOR MAIS PRÓXIMO */
         .data-bottom-banner {
             background: #faf6f0; 
             color: #05010d;
@@ -360,7 +362,7 @@
             font-size: 1rem;
             line-height: 1.5;
             text-align: center;
-            margin-top: 120px; /* AUMENTADO: de 60px para 120px para descer o banner */
+            margin-top: 50px; /* Reduzido de 120px para 50px para não fugir da tela */
             width: 100%;
             max-width: 900px;
             margin-left: auto;
@@ -423,6 +425,7 @@
 </head>
 <body>
 
+    <!-- CABEÇALHO -->
     <header>
         <div class="logo">Plast</div>
         <nav>
@@ -440,6 +443,7 @@
         </div>
     </header>
 
+    <!-- PRIMEIRA DOBRA (HERO) -->
     <main class="hero">
         <div class="hero-content">
             <div class="badge" id="hero-badge">👥 Conecte. Colabore. Cresça.</div>
@@ -465,6 +469,7 @@
         </div>
     </main>
 
+    <!-- SEGUNDA DOBRA (FEATURES) -->
     <section class="features">
         <div class="features-header" id="features-header-block">
             <div class="features-title-col">
@@ -477,6 +482,7 @@
         </div>
         <div class="features-grid" id="features-cards-block">
             <div class="features-line"></div>
+            <!-- Card 01 -->
             <div class="feature-card">
                 <div class="feature-number">01</div>
                 <div class="feature-icon-wrapper"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
@@ -484,6 +490,7 @@
                 <p id="c1-text">Nós reunimos e organizamos os criadores da sua cidade para que você encontre as pessoas certas sem precisar passar horas procurando no Instagram ou pedindo indicações.</p>
                 <div class="feature-footer"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> <span id="c1-foot">+ Tempo para o que realmente importa</span></div>
             </div>
+            <!-- Card 02 -->
             <div class="feature-card">
                 <div class="feature-number">02</div>
                 <div class="feature-icon-wrapper"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"></path></svg></div>
@@ -491,6 +498,7 @@
                 <p id="c2-text">Filtre criadores por localização, nicho, estilo de conteúdo e público para encontrar quem realmente combina com a sua empresa.</p>
                 <div class="feature-footer"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 15h2.25m8.024-9.75c.011.05.028.1.052.148.591 1.2.924 2.55.924 3.977a8.96 8.96 0 01-.999 4.125m.023-8.25c-.076-.365.183-.75.575-.75h.908c.889 0 1.713.518 1.972 1.368.339 1.11.521 2.287.521 3.507 0 1.553-.295 3.036-.831 4.398C20.613 14.547 19.833 15 19 15h-1.053c-.472 0-.745-.556-.5-.96a8.95 8.95 0 00.303-.54m.023-8.25H16.48a4.5 4.5 0 01-1.423-.23l-3.114-1.04a4.5 4.5 0 00-1.423-.23H6.504c-.361 0-.633.36-.554.715.111.5.198 1.013.256 1.536m0 0A6.002 6.002 0 0111.45 6.5h.525c.361 0 .633-.36.554-.715m-2.274 4.215a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0zM18.75 18.75a8.96 8.96 0 01-2.32 1.503"></path></svg> <span id="c2-foot">Match perfeito entre marca e criador</span></div>
             </div>
+            <!-- Card 03 -->
             <div class="feature-card">
                 <div class="feature-number">03</div>
                 <div class="feature-icon-wrapper"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"></path></svg></div>
@@ -501,6 +509,7 @@
         </div>
     </section>
 
+    <!-- TERCEIRA DOBRA (DADOS / PROVA SOCIAL) -->
     <section class="data-section" id="data-section-block">
         <div class="data-layout">
             <div class="data-content">
@@ -508,6 +517,7 @@
                 <p class="subtitle" id="data-subtitle">Os <span class="highlight">consumidores mudaram</span> a forma como descobrem empresas e decidem suas compras.</p>
                 
                 <div class="stats-grid">
+                    <!-- Stat 1 -->
                     <div class="stat-item">
                         <div class="stat-header">
                             <span id="stat1-icon">✍️</span> <span id="stat1-val">2,5x</span>
@@ -516,6 +526,7 @@
                         <span class="stat-source" id="stat1-src">Fonte: Nielsen / Bazaarvoices</span>
                     </div>
                     
+                    <!-- Stat 2 -->
                     <div class="stat-item">
                         <div class="stat-header">
                             <span id="stat2-icon">📊</span> <span id="stat2-val">79%</span>
@@ -524,6 +535,7 @@
                         <span class="stat-source" id="stat2-src">Fonte: Stackla</span>
                     </div>
 
+                    <!-- Stat 3 -->
                     <div class="stat-item">
                         <div class="stat-header">
                             <span id="stat3-icon">🤝</span> <span id="stat3-val">92%</span>
@@ -547,6 +559,7 @@
         </div>
     </section>
 
+    <!-- SCRIPT DE INTERATIVIDADE E ANIMAÇÃO -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
