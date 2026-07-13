@@ -228,11 +228,7 @@
             display: flex; align-items: center; gap: 12px; color: var(--primary-yellow);
             font-size: 0.9rem; font-weight: 600; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);
         }
-        .feature-footer svg {
-            width: 24px; 
-            height: 24px;
-            flex-shrink: 0;
-        }
+        .feature-footer svg { width: 24px; height: 24px; flex-shrink: 0; }
 
         /* ==========================================
            DATA SECTION (3ª Dobra)
@@ -240,134 +236,161 @@
         .data-section {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 40px 24px 120px;
+            padding: 40px 24px 100px;
             width: 100%;
         }
+        .data-layout { display: flex; flex-direction: column-reverse; gap: 60px; align-items: center; position: relative; }
+        .data-content { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .data-content h2 { font-size: 2.2rem; line-height: 1.3; font-weight: 700; letter-spacing: -1px; max-width: 650px; }
+        .data-content p.subtitle { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; max-width: 500px; }
+        
+        .stats-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+        .stat-item { display: flex; flex-direction: column; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .stat-header { display: flex; align-items: center; gap: 10px; color: var(--text-light); font-size: 1.5rem; font-weight: 700; }
+        .stat-header span { font-size: 1.2rem; }
+        .stat-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+        .stat-source { font-size: 0.8rem; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 10px; }
 
-        .data-layout {
-            display: flex;
-            flex-direction: column-reverse;
-            gap: 60px;
-            align-items: center;
-            position: relative;
+        .data-visual { width: 100%; display: flex; justify-content: center; position: relative; }
+        .pill-image-container {
+            width: 100%; max-width: 320px; height: 750px; border-radius: 200px;
+            overflow: hidden; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .pill-overlay {
+            position: absolute; top: 0; left: 0; right: 0; height: 45%;
+            background: linear-gradient(180deg, var(--primary-yellow) 0%, rgba(250, 204, 21, 0) 100%);
+            z-index: 2; transition: background 0.4s ease;
+        }
+        .pill-img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1; transition: var(--transition-smooth); }
+
+        .data-bottom-banner {
+            background: #faf6f0; color: #05010d; padding: 24px 32px; border-radius: 16px;
+            font-weight: 600; font-size: 1rem; line-height: 1.5; text-align: center;
+            margin-top: 40px; width: 100%; max-width: 900px; margin-left: auto; margin-right: auto;
+            box-shadow: 0 10px 30px rgba(250, 204, 21, 0.1);
         }
 
-        .data-content {
+        /* ==========================================
+           HOW IT WORKS SECTION (4ª Dobra) - SEM NEON/BRILHO
+           ========================================== */
+        .how-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 24px 120px;
+            width: 100%;
+        }
+        
+        .how-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Lado esquerdo: Acordeão */
+        .how-steps-container {
             flex: 1;
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        .data-content h2 {
-            font-size: 2.2rem;
-            line-height: 1.3;
-            font-weight: 700;
-            letter-spacing: -1px;
-            max-width: 650px;
-        }
-
-        .data-content p.subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 40px;
-            max-width: 500px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-        }
-
-        .stat-item {
+        .step-item {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            align-items: flex-start;
         }
 
-        .stat-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* Botão/Título com fundo sólido e elegante */
+        .step-title {
+            background: #15111c; /* Cor sólida, cinza/roxo muito escuro */
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            width: max-content;
+            max-width: 100%;
+        }
+
+        .step-item:hover .step-title {
+            background: #1c1726;
             color: var(--text-light);
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .stat-header span {
-            font-size: 1.2rem;
         }
 
-        .stat-desc {
-            font-size: 0.9rem;
+        /* Estado ativo do Título */
+        .step-item.active .step-title {
+            background: #251e33; /* Fundo um pouco mais claro */
+            border-color: rgba(157, 113, 250, 0.4);
+            color: var(--text-light);
+        }
+
+        /* Corpo do texto (Escondido por padrão) */
+        .step-body {
+            display: flex;
+            gap: 16px;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.4s ease-in-out;
+            margin-top: 0;
+            padding-left: 24px; /* Para alinhar com o começo do botão */
+        }
+
+        .step-item.active .step-body {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 12px;
+            margin-bottom: 24px;
+        }
+
+        /* A linha em "L" do esboço */
+        .step-l-shape {
+            width: 24px;
+            border-left: 2px solid var(--primary-purple);
+            border-bottom: 2px solid var(--primary-purple);
+            border-bottom-left-radius: 8px;
+            margin-bottom: 8px; /* Para a linha não descer até o fim do texto */
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 0.95rem;
             color: var(--text-muted);
             line-height: 1.6;
+            max-width: 450px;
+            padding-top: 8px;
         }
 
-        .stat-source {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.3);
-            margin-top: auto;
-            padding-top: 10px;
-        }
-
-        /* IMAGEM EM PÍLULA */
-        .data-visual {
-            width: 100%;
+        /* Lado direito: Imagem (Sólida, sem brilho) */
+        .how-image-container {
+            flex: 1;
             display: flex;
             justify-content: center;
-            position: relative;
+            align-items: center;
         }
 
-        .pill-image-container {
+        .how-image-box {
             width: 100%;
-            max-width: 320px;
-            height: 750px; 
-            border-radius: 200px;
+            max-width: 600px;
+            aspect-ratio: 4/3;
+            border-radius: 16px;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #0a0614; /* Fundo escuro de fallback */
+            /* Sombra simples preta, sem cores neon */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             position: relative;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         }
 
-        .pill-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 45%;
-            background: linear-gradient(180deg, var(--primary-yellow) 0%, rgba(250, 204, 21, 0) 100%);
-            z-index: 2;
-            transition: background 0.4s ease;
-        }
-
-        .pill-img {
+        .how-image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            position: absolute;
-            top: 0; left: 0;
-            z-index: 1;
-            transition: var(--transition-smooth);
-        }
-
-        /* AJUSTE: BANNER INFERIOR - Descendo um pouco (~16px) */
-        .data-bottom-banner {
-            background: #faf6f0; 
-            color: #05010d;
-            padding: 24px 32px;
-            border-radius: 16px;
-            font-weight: 600;
-            font-size: 1rem;
-            line-height: 1.5;
-            text-align: center;
-            margin-top: 40px; /* Alterado de 24px para 40px para dar o espaçamento solicitado */
-            width: 100%;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 10px 30px rgba(250, 204, 21, 0.1);
+            transition: opacity 0.3s ease;
         }
 
         /* ==========================================
@@ -375,8 +398,6 @@
            ========================================== */
         @media (min-width: 1024px) {
             header { padding: 20px 80px; }
-            
-            /* Hero */
             .hero { flex-direction: row; padding: 120px 80px 140px; gap: 80px; align-items: center; }
             .hero-content { width: 50%; }
             .hero-content h1 { font-size: 3.5rem; line-height: 1.1; }
@@ -386,32 +407,26 @@
             .neon-frame { width: 450px; height: 500px; }
             .floating-card { left: -35px; right: auto; width: 315px; bottom: -25px; }
             
-            /* Features */
             .features { padding: 80px 80px 120px; }
             .features-header { flex-direction: row; justify-content: space-between; align-items: flex-end; }
             .features-subtitle-col { border-top: none; border-left: 1px solid rgba(255,255,255,0.1); padding-top: 0; padding-left: 40px; margin-bottom: 8px; }
             .features-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
             .features-line { display: block; }
 
-            /* Data Section 3ª Dobra */
             .data-section { padding: 80px 80px 120px; }
             .data-layout { flex-direction: row; justify-content: space-between; align-items: center; gap: 80px; }
             .data-content { width: 60%; }
             .data-content h2 { font-size: 2.8rem; }
-            
-            .stats-grid { 
-                grid-template-columns: repeat(3, 1fr); 
-                gap: 24px; 
-            }
-            .stat-item {
-                border-top: none;
-                border-left: 1px solid rgba(255,255,255,0.1);
-                padding-top: 0;
-                padding-left: 24px;
-            }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+            .stat-item { border-top: none; border-left: 1px solid rgba(255,255,255,0.1); padding-top: 0; padding-left: 24px; }
             .stat-item:first-child { border-left: none; padding-left: 0; }
-            
             .data-visual { width: 40%; justify-content: flex-end; }
+
+            /* Ajustes para a 4ª dobra no desktop */
+            .how-section { padding: 80px 80px 120px; }
+            .how-layout { flex-direction: row; align-items: center; gap: 80px; }
+            .how-steps-container { width: 50%; }
+            .how-image-container { width: 50%; justify-content: flex-end; }
         }
 
         @media (max-width: 768px) {
@@ -420,6 +435,11 @@
             .logo { width: 100%; }
             .auth-container { width: 100%; justify-content: center; }
             .pill-image-container { height: 500px; } 
+            
+            .step-title {
+                white-space: normal;
+                padding: 12px 24px;
+            }
         }
     </style>
 </head>
@@ -517,29 +537,18 @@
                 <p class="subtitle" id="data-subtitle">Os <span class="highlight">consumidores mudaram</span> a forma como descobrem empresas e decidem suas compras.</p>
                 
                 <div class="stats-grid">
-                    <!-- Stat 1 -->
                     <div class="stat-item">
-                        <div class="stat-header">
-                            <span id="stat1-icon">✍️</span> <span id="stat1-val">2,5x</span>
-                        </div>
+                        <div class="stat-header"><span id="stat1-icon">✍️</span> <span id="stat1-val">2,5x</span></div>
                         <p class="stat-desc" id="stat1-desc">Conteúdos gerados por usuários são percebidos como mais autênticos do que conteúdos produzidos pelas próprias marcas, ou influenciadores muito grandes.</p>
                         <span class="stat-source" id="stat1-src">Fonte: Nielsen / Bazaarvoices</span>
                     </div>
-                    
-                    <!-- Stat 2 -->
                     <div class="stat-item">
-                        <div class="stat-header">
-                            <span id="stat2-icon">📊</span> <span id="stat2-val">79%</span>
-                        </div>
+                        <div class="stat-header"><span id="stat2-icon">📊</span> <span id="stat2-val">79%</span></div>
                         <p class="stat-desc" id="stat2-desc">Consumidores afirmam que conteúdos gerados por pessoas semelhantes aumenta decisões de compra.</p>
                         <span class="stat-source" id="stat2-src">Fonte: Stackla</span>
                     </div>
-
-                    <!-- Stat 3 -->
                     <div class="stat-item">
-                        <div class="stat-header">
-                            <span id="stat3-icon">🤝</span> <span id="stat3-val">92%</span>
-                        </div>
+                        <div class="stat-header"><span id="stat3-icon">🤝</span> <span id="stat3-val">92%</span></div>
                         <p class="stat-desc" id="stat3-desc">Consumidores confiam mais em recomendações de pessoas do que em publicidade tradicional.</p>
                         <span class="stat-source" id="stat3-src">Fonte: Nielsen</span>
                     </div>
@@ -553,9 +562,61 @@
                 </div>
             </div>
         </div>
-
         <div class="data-bottom-banner" id="data-banner">
             Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?
+        </div>
+    </section>
+
+    <!-- QUARTA DOBRA (COMO FUNCIONA / ACORDEÃO) -->
+    <section class="how-section" id="how-section-block">
+        <div class="how-layout">
+            <!-- Lista interativa esquerda -->
+            <div class="how-steps-container" id="how-steps-container">
+                
+                <!-- Passo 1 -->
+                <div class="step-item active" data-step="0">
+                    <button class="step-title" id="how-t1">Encontre o criador ideal</button>
+                    <div class="step-body">
+                        <div class="step-l-shape"></div>
+                        <p class="step-text" id="how-d1">Utilize nossa inteligência artificial para filtrar e encontrar os criadores de conteúdo mais próximos da sua região. Garantimos o match perfeito com a identidade e os valores da sua marca.</p>
+                    </div>
+                </div>
+
+                <!-- Passo 2 -->
+                <div class="step-item" data-step="1">
+                    <button class="step-title" id="how-t2">Escolha com confiança</button>
+                    <div class="step-body">
+                        <div class="step-l-shape"></div>
+                        <p class="step-text" id="how-d2">Analise o portfólio completo, métricas de engajamento e o histórico de campanhas de cada criador antes de fechar negócio. Transparência total para a sua decisão.</p>
+                    </div>
+                </div>
+
+                <!-- Passo 3 -->
+                <div class="step-item" data-step="2">
+                    <button class="step-title" id="how-t3">Gerencie tudo em um só lugar</button>
+                    <div class="step-body">
+                        <div class="step-l-shape"></div>
+                        <p class="step-text" id="how-d3">Aprove propostas, acompanhe a produção, alinhe roteiros e realize pagamentos de forma 100% segura sem precisar sair da plataforma.</p>
+                    </div>
+                </div>
+
+                <!-- Passo 4 -->
+                <div class="step-item" data-step="3">
+                    <button class="step-title" id="how-t4">Descubra o que realmente funciona</button>
+                    <div class="step-body">
+                        <div class="step-l-shape"></div>
+                        <p class="step-text" id="how-d4">Tenha acesso a relatórios detalhados sobre o desempenho dos conteúdos. Entenda o que atrai seu cliente final e escale seus resultados.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Imagem Direita -->
+            <div class="how-image-container">
+                <div class="how-image-box">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Demonstração do Passo" id="step-display-image">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -563,6 +624,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
+            // DADOS DINÂMICOS PARA MODO EMPRESA E CRIADOR
             const data = {
                 empresa: {
                     // --- Dobra 1 ---
@@ -591,7 +653,19 @@
                     s3Icon: "🤝", s3Val: "92%", s3Desc: "Consumidores confiam mais em recomendações de pessoas do que em publicidade tradicional.", s3Src: "Fonte: Nielsen",
                     dataImg: "https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=600&auto=format&fit=crop",
                     overlayColor: "linear-gradient(180deg, #facc15 0%, rgba(250, 204, 21, 0) 100%)",
-                    dataBanner: "Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?"
+                    dataBanner: "Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?",
+
+                    // --- Dobra 4 (COMO FUNCIONA / ACORDEÃO) ---
+                    hT1: "Encontre o criador ideal", hD1: "Utilize nossa inteligência artificial para filtrar e encontrar os criadores de conteúdo mais próximos da sua região. Garantimos o match perfeito com a identidade e os valores da sua marca.",
+                    hT2: "Escolha com confiança", hD2: "Analise o portfólio completo, métricas de engajamento e o histórico de campanhas de cada criador antes de fechar negócio. Transparência total para a sua decisão.",
+                    hT3: "Gerencie tudo em um só lugar", hD3: "Aprove propostas, acompanhe a produção, alinhe roteiros e realize pagamentos de forma 100% segura sem precisar sair da plataforma.",
+                    hT4: "Descubra o que realmente funciona", hD4: "Tenha acesso a relatórios detalhados sobre o desempenho dos conteúdos. Entenda o que atrai seu cliente final e escale seus resultados.",
+                    howImages: [
+                        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", // img busca
+                        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80", // img perfil/escolha
+                        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", // img gestao/dashboard
+                        "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=800&q=80"  // img resultados
+                    ]
                 },
                 criador: {
                     // --- Dobra 1 ---
@@ -618,26 +692,79 @@
                     s1Icon: "📱", s1Val: "UGC", s1Desc: "Marcas estão investindo pesado em User Generated Content (Conteúdo Gerado pelo Usuário). Sua autenticidade é a nova moeda.", s1Src: "Oportunidade real",
                     s2Icon: "💸", s2Val: "R$", s2Desc: "Criadores locais estão monetizando suas redes e fechando parcerias sem precisar ter milhões de seguidores.", s2Src: "Micro-influência",
                     s3Icon: "🎯", s3Val: "100%", s3Desc: "Você tem controle total. Escolha quais missões aceitar e com quais marcas da sua cidade deseja colaborar.", s3Src: "Liberdade criativa",
-                    // ALTERAÇÃO AQUI: Imagem de gráfico/dashboard corrigida para o modo Criador
                     dataImg: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop", 
                     overlayColor: "linear-gradient(180deg, #9d71fa 0%, rgba(157, 113, 250, 0) 100%)", 
-                    dataBanner: "A era de criar conteúdo de graça acabou. Jogue o jogo onde você também sai ganhando e seja recompensado pelo seu talento."
+                    dataBanner: "A era de criar conteúdo de graça acabou. Jogue o jogo onde você também sai ganhando e seja recompensado pelo seu talento.",
+
+                    // --- Dobra 4 (COMO FUNCIONA / ACORDEÃO) ---
+                    hT1: "Encontre as melhores missões", hD1: "Receba recomendações exclusivas de marcas da sua cidade que buscam exatamente o seu perfil e estilo de criação. As oportunidades vêm até você.",
+                    hT2: "Crie com liberdade", hD2: "Receba os briefings detalhados e use sua autenticidade para gravar. Você decide como expressar a mensagem da marca, mantendo a sua essência.",
+                    hT3: "Gerencie suas parcerias", hD3: "Acompanhe o status das suas missões, edições solicitadas e os prazos de entrega em um painel gamer simples e organizado.",
+                    hT4: "Receba suas recompensas", hD4: "Conteúdo aprovado é dinheiro na conta! Acumule XP, suba de nível e resgate seus pagamentos de forma rápida direto pela plataforma.",
+                    howImages: [
+                        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80", // img missoes
+                        "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80", // img gravacao
+                        "https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=800&q=80", // img painel
+                        "https://images.unsplash.com/photo-1580519542036-ed47f3e42d1b?auto=format&fit=crop&w=800&q=80"  // img dinheiro/recompensa
+                    ]
                 }
             };
 
             const toggleOptions = document.querySelectorAll(".toggle-option");
             const modeToggle = document.getElementById("mode-toggle");
+            let currentMode = "empresa"; // Guarda o estado atual
 
+            // Elementos para animar no switch principal
             const elementsToAnimate = [
                 "#hero-text-block", "#hero-badge", "#hero-floating-card", "#hero-image-frame",
                 "#features-header-block", ".feature-card",
-                "#data-section-block .data-content", "#data-img", "#data-banner"
+                "#data-section-block .data-content", "#data-img", "#data-banner",
+                "#how-steps-container", "#step-display-image"
             ];
 
+            // ----------------------------------------------------
+            // LÓGICA DO ACORDEÃO (QUARTA DOBRA)
+            // ----------------------------------------------------
+            const steps = document.querySelectorAll('.step-item');
+            const stepDisplayImage = document.getElementById('step-display-image');
+
+            steps.forEach(step => {
+                const titleBtn = step.querySelector('.step-title');
+                titleBtn.addEventListener('click', () => {
+                    // Se já estiver ativo, não faz nada
+                    if (step.classList.contains('active')) return;
+
+                    // Remove classe de todos
+                    steps.forEach(s => s.classList.remove('active'));
+                    
+                    // Adiciona no clicado
+                    step.classList.add('active');
+
+                    // Pega o índice do passo clicado (0 a 3)
+                    const stepIndex = step.getAttribute('data-step');
+
+                    // Transição da imagem lateral
+                    gsap.to(stepDisplayImage, {
+                        opacity: 0,
+                        duration: 0.2,
+                        onComplete: () => {
+                            // Troca a URL baseada no modo atual e passo clicado
+                            stepDisplayImage.src = data[currentMode].howImages[stepIndex];
+                            gsap.to(stepDisplayImage, { opacity: 1, duration: 0.2 });
+                        }
+                    });
+                });
+            });
+
+            // ----------------------------------------------------
+            // LÓGICA DO TOGGLE PRINCIPAL (EMPRESA / CRIADOR)
+            // ----------------------------------------------------
             toggleOptions.forEach(option => {
                 option.addEventListener("click", () => {
                     const mode = option.getAttribute("data-mode");
                     if(option.classList.contains("active")) return;
+                    
+                    currentMode = mode; // Atualiza variável global de estado
 
                     toggleOptions.forEach(opt => opt.classList.remove("active"));
                     option.classList.add("active");
@@ -675,27 +802,38 @@
                             // 3ª Dobra
                             document.getElementById("data-title").innerHTML = d.dataTitle;
                             document.getElementById("data-subtitle").innerHTML = d.dataSub;
-                            
                             document.getElementById("stat1-icon").textContent = d.s1Icon;
                             document.getElementById("stat1-val").textContent = d.s1Val;
                             document.getElementById("stat1-desc").textContent = d.s1Desc;
                             document.getElementById("stat1-src").textContent = d.s1Src;
-
                             document.getElementById("stat2-icon").textContent = d.s2Icon;
                             document.getElementById("stat2-val").textContent = d.s2Val;
                             document.getElementById("stat2-desc").textContent = d.s2Desc;
                             document.getElementById("stat2-src").textContent = d.s2Src;
-
                             document.getElementById("stat3-icon").textContent = d.s3Icon;
                             document.getElementById("stat3-val").textContent = d.s3Val;
                             document.getElementById("stat3-desc").textContent = d.s3Desc;
                             document.getElementById("stat3-src").textContent = d.s3Src;
-
                             document.getElementById("data-img").src = d.dataImg;
                             document.getElementById("pill-overlay").style.background = d.overlayColor;
                             document.getElementById("data-banner").textContent = d.dataBanner;
 
-                            // Fade In
+                            // 4ª Dobra (Acordeão)
+                            document.getElementById("how-t1").textContent = d.hT1;
+                            document.getElementById("how-d1").textContent = d.hD1;
+                            document.getElementById("how-t2").textContent = d.hT2;
+                            document.getElementById("how-d2").textContent = d.hD2;
+                            document.getElementById("how-t3").textContent = d.hT3;
+                            document.getElementById("how-d3").textContent = d.hD3;
+                            document.getElementById("how-t4").textContent = d.hT4;
+                            document.getElementById("how-d4").textContent = d.hD4;
+
+                            // Ao trocar o modo principal, resetamos o acordeão para o Passo 1 (index 0)
+                            steps.forEach(s => s.classList.remove('active'));
+                            steps[0].classList.add('active');
+                            stepDisplayImage.src = d.howImages[0]; // Volta a primeira imagem do novo array
+
+                            // Fade In de tudo
                             gsap.to(elementsToAnimate, { opacity: 1, y: 0, duration: 0.3, stagger: 0.03 });
                         }
                     });
