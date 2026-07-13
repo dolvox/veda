@@ -1,95 +1,977 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plast - Conecte. Colabore. Cresça.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #0a0a0c;
-            color: #ffffff;
-            font-family: sans-serif;
+        :root {
+            --bg-color: #050508;
+            --card-bg: #0d0d14;
+            --text-color: #ffffff;
+            --text-muted: #94a3b8;
+            --accent-purple: #6366f1;
+            --accent-purple-glow: rgba(99, 102, 241, 0.15);
+            --accent-gold: #facc15;
+            --accent-gold-glow: rgba(250, 204, 21, 0.2);
+            --cream-bg: #fdfbf7;
+            --cream-text: #1e293b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Navbar */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background-color: rgba(5, 5, 8, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        .navbar {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 24px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .logo-box {
+            border: 2px solid #ff6b00;
+            padding: 2px 8px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #2e0854, #110224);
+        }
+
+        .logo-orange {
+            color: #ff6b00;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-color);
+        }
+
+        /* Toggle Button (Empresa / Criador) */
+        .toggle-container {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .toggle-btn {
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .toggle-btn.empresa {
+            background-color: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 12px var(--accent-gold-glow);
+        }
+
+        .toggle-btn.criador {
+            color: var(--text-muted);
+        }
+
+        .toggle-btn.criador:hover {
+            color: var(--text-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-login {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .btn-login:hover {
+            color: var(--text-muted);
+        }
+
+        .btn-register {
+            background-color: transparent;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-register:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
             align-items: center;
         }
 
-        .header-text {
-            text-align: center;
-            max-width: 600px;
-            margin-bottom: 80px; /* Mais distância entre o título e o conteúdo abaixo */
-        }
-
-        .header-text h1 {
-            font-size: 24px;
-            line-height: 1.4;
+        .hero-badge {
+            background-color: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #a5b4fc;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
             font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 24px;
         }
 
-        .content-container {
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .text-gold {
+            color: var(--accent-gold);
+            text-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+        }
+
+        .text-purple {
+            color: #a78bfa;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 520px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
             display: flex;
-            align-items: flex-start;
-            gap: 60px; /* Maior distância entre o bloco de opções e a imagem */
-            max-width: 900px;
+            gap: 16px;
+            align-items: center;
         }
 
-        .options-list {
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-purple), #4f46e5);
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(99, 102, 241, 0.45);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            background-color: rgba(255, 255, 255, 0.02);
+            color: var(--text-color);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-hover);
+        }
+
+        /* Hero Right Area */
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-box {
+            border: 3px solid var(--accent-gold);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 0 35px var(--accent-gold-glow);
+            aspect-ratio: 1;
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .hero-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            background-color: rgba(13, 13, 20, 0.9);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-icon {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge-text h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .badge-text p {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Section 2: Cards */
+        .sec-cards {
+            padding: 100px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .sec-header {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: end;
+        }
+
+        .sec-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .sec-header-right {
+            border-left: 2px solid var(--border-color);
+            padding-left: 30px;
+        }
+
+        .sec-header-right p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            justify-content: space-between;
+            min-height: 380px;
+            transition: all 0.3s;
+            position: relative;
         }
 
-        .option {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px 25px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 250px;
+        .card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
         }
 
-        .option.active {
-            border-left: 4px solid #6366f1;
-            background: rgba(99, 102, 241, 0.1);
+        .card-top {
+            margin-bottom: 30px;
         }
 
-        .description {
+        .card-num {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 14px;
-            color: #a0a0a0;
-            line-height: 1.6;
-            margin-top: 15px;
-            padding-left: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 24px;
         }
 
-        .image-container img {
-            width: 450px;
-            border-radius: 15px;
+        .card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .card-footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 24px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-footer-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .icon-yellow {
+            width: 32px;
+            height: 32px;
+            stroke: var(--accent-gold);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Section 3 & 4 Layouts (Stats and Capsule) */
+        .sec-stats {
+            padding: 100px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stats-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .stats-left h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .stats-left .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .stat-num {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .stat-source {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .capsule-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .capsule-card {
+            width: 100%;
+            max-width: 300px;
+            height: 480px;
+            border-radius: 150px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .capsule-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Purple theme adjustments for Section 4 */
+        .capsule-card.purple-gradient {
+            background: linear-gradient(180deg, #1d152c 0%, #0d0d14 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .capsule-gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(99,102,241,0.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Full Width Cream Callout Banner */
+        .callout-banner {
+            background-color: var(--cream-bg);
+            color: var(--cream-text);
+            border-radius: 20px;
+            padding: 40px 60px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .callout-banner p {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Section 5 (How it Works / List with Spacing Adjustment) */
+        .sec-how-it-works {
+            padding: 120px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .how-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 90px auto; /* Maior distância entre o título principal e os blocos abaixo */
+        }
+
+        .how-header h2 {
+            font-size: 26px;
+            line-height: 1.45;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px; /* Maior distância horizontal entre os botões de texto e a imagem */
+            align-items: flex-start;
+        }
+
+        .how-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px; /* Maior distância entre os próprios botões interativos */
+        }
+
+        .how-option {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .how-option:hover {
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .how-option.active {
+            border-left: 4px solid var(--accent-purple);
+            background: rgba(99, 102, 241, 0.06);
+            border-color: rgba(99, 102, 241, 0.3);
+            border-left-color: var(--accent-purple);
+        }
+
+        .how-option-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .how-option-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-top: 14px;
+            padding-left: 2px;
+        }
+
+        .how-image-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .how-image-container img {
+            width: 100%;
+            max-width: 460px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0;
+            background-color: #020204;
+        }
+
+        .footer-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 48px;
+            }
+
+            .hero-content p {
+                margin: 0 auto 40px auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .sec-header {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .sec-header-right {
+                border-left: none;
+                padding-left: 0;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-layout {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capsule-wrapper {
+                order: -1;
+            }
+
+            .how-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .how-image-container {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="header-text">
-        <h1>Uma plataforma que não te trata como um número.<br>
-        Feche parcerias locais com marcas da sua cidade e<br>
-        fale a língua do seu público.</h1>
-    </div>
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <span class="logo-box">P</span><span class="logo-text">last</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#solucoes">Soluções</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
 
-    <div class="content-container">
-        <div class="options-list">
-            <div class="option active">
-                <strong>Encontre as melhores missões</strong>
-                <p class="description">Receba recomendações exclusivas de marcas da sua cidade que buscam exatamente o seu perfil e estilo de criação. As oportunidades vêm até você.</p>
+            <div class="toggle-container">
+                <a href="#empresa" class="toggle-btn empresa">Empresa</a>
+                <a href="#criador" class="toggle-btn criador">Criador</a>
             </div>
-            <div class="option">Crie com liberdade</div>
-            <div class="option">Gerencie suas parcerias</div>
-            <div class="option">Receba suas recompensas</div>
-        </div>
 
-        <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" alt="Equipe trabalhando">
+            <div class="nav-actions">
+                <a href="#login" class="btn-login">Login</a>
+                <a href="#cadastrar" class="btn-register">Cadastrar</a>
+            </div>
         </div>
-    </div>
+    </header>
 
+    <main class="container">
+
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    Conecte. Colabore. Cresça.
+                </div>
+                <h1>Se <span class="text-gold">conecte</span> com diversos criativos e <span class="text-gold">influencers</span> da sua <span class="text-gold">cidade</span>.</h1>
+                <p>Aumente sua escala de <span class="text-purple">branding</span> da empresa em toda a cidade e leve sua marca para mais pessoas, todos os dias.</p>
+                <div class="hero-buttons">
+                    <a href="#começar" class="btn-primary">Começar agora →</a>
+                    <a href="#saiba-mais" class="btn-secondary">Saiba mais</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="hero-image-box">
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=600" alt="Camera Shooting Scene">
+                </div>
+                <div class="floating-badge">
+                    <div class="badge-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <div class="badge-text">
+                        <h4>Mais visibilidade</h4>
+                        <p>+ alcance • + conexões • + resultados</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec-cards" id="recursos">
+            <div class="sec-header">
+                <h2>Marketing de influência não é só seguidores. Mas sim em criar <span class="text-purple">identificação</span> com quem compra de <span class="text-gold">você</span>.</h2>
+                <div class="sec-header-right">
+                    <p>Os melhores conteúdos não começam com uma câmera. Começam com a <span class="text-gold">pessoa certa</span>.</p>
+                </div>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-num">01</div>
+                        <h3>Economia de tempo</h3>
+                        <p class="card-desc">Nós reunimos e organizamos os criadores da sua cidade para que você encontre as pessoas certas sem precisar passar horas procurando no Instagram ou pedindo indicações.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="icon-yellow" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        <span class="card-footer-text">+ Tempo para o que realmente importa</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-num">02</div>
+                        <h3>Talentos em sua cidade</h3>
+                        <p class="card-desc">Filtre criadores por localização, nicho, estilo de conteúdo e público para encontrar quem realmente combina com a sua empresa.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="icon-yellow" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        <span class="card-footer-text">Match perfeito entre marca e criador</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-num">03</div>
+                        <h3>Conteúdo que conecta</h3>
+                        <p class="card-desc">Seu cliente esquece anúncios. Mas lembra de histórias e pessoas. Conteúdos autênticos criam identificação e tornam sua empresa mais lembrada.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="icon-yellow" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <span class="card-footer-text">Mais conexão, mais confiança, mais resultado</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec-stats" id="solucoes">
+            <div class="stats-layout">
+                <div class="stats-left">
+                    <h2>Não acredite apenas na nossa palavra. Os <span class="text-gold">dados mostram</span> por quê.</h2>
+                    <p class="subtitle">Os <span class="text-gold">consumidores mudaram</span> a forma como descobrem empresas e decidem suas compras.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-num">2,5x</span>
+                            <p class="stat-desc">Conteúdos gerados por usuários são percebidos como mais autênticos do que conteúdos produzidos pelas próprias marcas ou influenciadores muito grandes.</p>
+                            <span class="stat-source">Fonte: Nielsen / Bazaarvoices</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">79%</span>
+                            <p class="stat-desc">Consumidores afirmam que conteúdos gerados por pessoas semelhantes aumentam muito as suas decisões de compra de um produto ou serviço local.</p>
+                            <span class="stat-source">Fonte: Stackla</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">92%</span>
+                            <p class="stat-desc">Consumidores confiam significativamente mais em recomendações espontâneas de pessoas do que em publicidade institucional tradicional.</p>
+                            <span class="stat-source">Fonte: Nielsen</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="capsule-wrapper">
+                    <div class="capsule-card">
+                        <div class="capsule-gradient-overlay" style="background: linear-gradient(180deg, rgba(250,204,21,0.2) 0%, transparent 60%);"></div>
+                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=600" alt="LinkedIn Screen Capsule App Mockup">
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout-banner">
+                <p>Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?</p>
+            </div>
+        </section>
+
+        <section class="sec-stats" id="criador-secao">
+            <div class="stats-layout">
+                <div class="capsule-wrapper">
+                    <div class="capsule-card purple-gradient">
+                        <div class="capsule-gradient-overlay" style="background: linear-gradient(180deg, rgba(167,139,250,0.3) 0%, transparent 60%);"></div>
+                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=600" alt="Purple Creative Capsule Glow">
+                    </div>
+                </div>
+
+                <div class="stats-left">
+                    <h2>O mercado mudou. Seu <span class="text-purple">talento vale</span> muito mais do que likes.</h2>
+                    <p class="subtitle">As marcas locais estão <span class="text-purple">buscando</span> criadores autênticos como você para se conectarem diretamente com o público da cidade.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-num" style="color: #a78bfa;">UGC</span>
+                            <p class="stat-desc">Marcas estão investindo pesado em User Generated Content (Conteúdo Gerado pelo Usuário). Sua autenticidade é a nova e verdadeira moeda de troca.</p>
+                            <span class="stat-source">Oportunidade real</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num" style="color: #a78bfa;">R$</span>
+                            <p class="stat-desc">Criadores locais estão de fato monetizando suas redes e fechando ótimas parcerias comerciais sem precisar ter milhões de seguidores.</p>
+                            <span class="stat-source">Micro-influência</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num" style="color: #a78bfa;">100%</span>
+                            <p class="stat-desc">Você tem controle absoluto da sua agenda. Escolha quais missões locais aceitar e com quais marcas da sua cidade deseja colaborar de verdade.</p>
+                            <span class="stat-source">Liberdade criativa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout-banner" style="background-color: var(--cream-bg);">
+                <p>A era de criar conteúdo de graça acabou. Jogue o jogo onde você também sai ganhando e seja muito bem recompensado pelo seu talento único.</p>
+            </div>
+        </section>
+
+        <section class="sec-how-it-works">
+            <div class="how-header">
+                <h2>Uma plataforma que não te trata como um número.<br>
+                Feche parcerias locais com marcas da sua cidade e<br>
+                fale a língua do seu público.</h2>
+            </div>
+            
+            <div class="how-grid">
+                <div class="how-list">
+                    <div class="how-option active">
+                        <div class="how-option-title">
+                            <span>Encontre as melhores missões</span>
+                        </div>
+                        <p class="how-option-desc" style="display: block;">Receba recomendações exclusivas de marcas da sua cidade que buscam exatamente o seu perfil e estilo de criação. As oportunidades vêm até você.</p>
+                    </div>
+
+                    <div class="how-option">
+                        <div class="how-option-title">
+                            <span>Crie com liberdade</span>
+                        </div>
+                        <p class="how-option-desc" style="display: none;">Tenha autonomia para planejar e executar a comunicação que seu público já conhece, mas sempre garantindo que os objetivos da marca parceira sejam atingidos de forma criativa e autêntica.</p>
+                    </div>
+
+                    <div class="how-option">
+                        <div class="how-option-title">
+                            <span>Gerencie suas parcerias</span>
+                        </div>
+                        <p class="how-option-desc" style="display: none;">Um painel totalmente organizado para que você não perca nenhum prazo, aprovação ou alteração e consiga manter o foco unicamente na criação do conteúdo.</p>
+                    </div>
+
+                    <div class="how-option">
+                        <div class="how-option-title">
+                            <span>Receba suas recompensas</span>
+                        </div>
+                        <p class="how-option-desc" style="display: none;">Cumpra as missões aprovadas com as marcas e receba seu pagamento diretamente no app, sem burocracias, taxas escondidas ou dor de cabeça com cobranças intermináveis.</p>
+                    </div>
+                </div>
+
+                <div class="how-image-container">
+                    <img src="https://images.unsplash.com/photo-152202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" alt="Criativos trabalhando juntos em notebooks" id="interactive-img">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-layout">
+            <a href="#" class="logo">
+                <span class="logo-box">P</span><span>last</span>
+            </a>
+            <p class="footer-text">© 2026 Plast S.A. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Interactive List Logic (Section 5)
+            const options = document.querySelectorAll(".how-option");
+            const imgDisplay = document.getElementById("interactive-img");
+            
+            // Array of images corresponding to each option
+            const images = [
+                "https://images.unsplash.com/photo-152202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800", // Image 1
+                "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800", // Image 2
+                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800", // Image 3
+                "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&q=80&w=800"  // Image 4
+            ];
+
+            options.forEach((option, index) => {
+                option.addEventListener("click", () => {
+                    // Remove active from all
+                    options.forEach(opt => {
+                        opt.classList.remove("active");
+                        opt.querySelector(".how-option-desc").style.display = "none";
+                    });
+
+                    // Add active to clicked
+                    option.classList.add("active");
+                    option.querySelector(".how-option-desc").style.display = "block";
+
+                    // Fade image transition
+                    imgDisplay.style.opacity = 0;
+                    setTimeout(() => {
+                        imgDisplay.src = images[index];
+                        imgDisplay.style.opacity = 1;
+                    }, 200);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
