@@ -236,7 +236,8 @@
         .data-section {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 40px 24px 100px;
+            /* Aumentei o padding inferior para empurrar a 4ª dobra para baixo */
+            padding: 40px 24px 140px; 
             width: 100%;
         }
         .data-layout { display: flex; flex-direction: column-reverse; gap: 60px; align-items: center; position: relative; }
@@ -266,18 +267,40 @@
         .data-bottom-banner {
             background: #faf6f0; color: #05010d; padding: 24px 32px; border-radius: 16px;
             font-weight: 600; font-size: 1rem; line-height: 1.5; text-align: center;
-            margin-top: 40px; width: 100%; max-width: 900px; margin-left: auto; margin-right: auto;
+            /* Margens ajustadas para não invadir a próxima dobra */
+            margin-top: 60px; 
+            margin-bottom: 20px;
+            width: 100%; max-width: 900px; margin-left: auto; margin-right: auto;
             box-shadow: 0 10px 30px rgba(250, 204, 21, 0.1);
         }
 
         /* ==========================================
-           HOW IT WORKS SECTION (4ª Dobra) - SEM NEON/BRILHO
+           HOW IT WORKS SECTION (4ª Dobra)
            ========================================== */
         .how-section {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 60px 24px 120px;
+            /* Mais respiro no topo para separar bem do banner branco */
+            padding: 40px 24px 120px;
             width: 100%;
+        }
+
+        /* Novo título adicionado conforme solicitado */
+        .how-header {
+            text-align: center;
+            margin-bottom: 70px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .how-header h2 {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        .how-header h2 .highlight-purple {
+            color: var(--primary-purple);
         }
         
         .how-layout {
@@ -302,7 +325,7 @@
 
         /* Botão/Título com fundo sólido e elegante */
         .step-title {
-            background: #15111c; /* Cor sólida, cinza/roxo muito escuro */
+            background: #15111c; 
             color: var(--text-muted);
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 16px 32px;
@@ -323,12 +346,12 @@
 
         /* Estado ativo do Título */
         .step-item.active .step-title {
-            background: #251e33; /* Fundo um pouco mais claro */
+            background: #251e33; 
             border-color: rgba(157, 113, 250, 0.4);
             color: var(--text-light);
         }
 
-        /* Corpo do texto (Escondido por padrão) */
+        /* Corpo do texto */
         .step-body {
             display: flex;
             gap: 16px;
@@ -337,7 +360,7 @@
             opacity: 0;
             transition: all 0.4s ease-in-out;
             margin-top: 0;
-            padding-left: 24px; /* Para alinhar com o começo do botão */
+            padding-left: 24px;
         }
 
         .step-item.active .step-body {
@@ -353,7 +376,7 @@
             border-left: 2px solid var(--primary-purple);
             border-bottom: 2px solid var(--primary-purple);
             border-bottom-left-radius: 8px;
-            margin-bottom: 8px; /* Para a linha não descer até o fim do texto */
+            margin-bottom: 8px; 
             flex-shrink: 0;
         }
 
@@ -380,8 +403,7 @@
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #0a0614; /* Fundo escuro de fallback */
-            /* Sombra simples preta, sem cores neon */
+            background: #0a0614; 
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             position: relative;
         }
@@ -413,7 +435,7 @@
             .features-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
             .features-line { display: block; }
 
-            .data-section { padding: 80px 80px 120px; }
+            .data-section { padding: 80px 80px 160px; }
             .data-layout { flex-direction: row; justify-content: space-between; align-items: center; gap: 80px; }
             .data-content { width: 60%; }
             .data-content h2 { font-size: 2.8rem; }
@@ -421,9 +443,10 @@
             .stat-item { border-top: none; border-left: 1px solid rgba(255,255,255,0.1); padding-top: 0; padding-left: 24px; }
             .stat-item:first-child { border-left: none; padding-left: 0; }
             .data-visual { width: 40%; justify-content: flex-end; }
+            .data-bottom-banner { margin-top: 90px; }
 
-            /* Ajustes para a 4ª dobra no desktop */
-            .how-section { padding: 80px 80px 120px; }
+            .how-section { padding: 60px 80px 120px; }
+            .how-header h2 { font-size: 2.2rem; }
             .how-layout { flex-direction: row; align-items: center; gap: 80px; }
             .how-steps-container { width: 50%; }
             .how-image-container { width: 50%; justify-content: flex-end; }
@@ -562,6 +585,8 @@
                 </div>
             </div>
         </div>
+        
+        <!-- O BANNER BRANCO COM AS MARGENS AJUSTADAS -->
         <div class="data-bottom-banner" id="data-banner">
             Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?
         </div>
@@ -569,6 +594,12 @@
 
     <!-- QUARTA DOBRA (COMO FUNCIONA / ACORDEÃO) -->
     <section class="how-section" id="how-section-block">
+        
+        <!-- NOVO TÍTULO ADICIONADO AQUI -->
+        <div class="how-header">
+            <h2 id="how-main-title">Uma plataforma que não vende humanos, mas sim uma parceria local, com quem é de sua cidade e que fale a língua do seu público.</h2>
+        </div>
+
         <div class="how-layout">
             <!-- Lista interativa esquerda -->
             <div class="how-steps-container" id="how-steps-container">
@@ -656,6 +687,7 @@
                     dataBanner: "Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?",
 
                     // --- Dobra 4 (COMO FUNCIONA / ACORDEÃO) ---
+                    howMainTitle: "Uma plataforma que não vende humanos, mas sim uma parceria local, com quem é de sua cidade e que fale a língua do seu público.",
                     hT1: "Encontre o criador ideal", hD1: "Utilize nossa inteligência artificial para filtrar e encontrar os criadores de conteúdo mais próximos da sua região. Garantimos o match perfeito com a identidade e os valores da sua marca.",
                     hT2: "Escolha com confiança", hD2: "Analise o portfólio completo, métricas de engajamento e o histórico de campanhas de cada criador antes de fechar negócio. Transparência total para a sua decisão.",
                     hT3: "Gerencie tudo em um só lugar", hD3: "Aprove propostas, acompanhe a produção, alinhe roteiros e realize pagamentos de forma 100% segura sem precisar sair da plataforma.",
@@ -697,6 +729,7 @@
                     dataBanner: "A era de criar conteúdo de graça acabou. Jogue o jogo onde você também sai ganhando e seja recompensado pelo seu talento.",
 
                     // --- Dobra 4 (COMO FUNCIONA / ACORDEÃO) ---
+                    howMainTitle: "Uma plataforma que não te trata como um número. Feche parcerias locais com marcas da sua cidade e fale a língua do seu público.",
                     hT1: "Encontre as melhores missões", hD1: "Receba recomendações exclusivas de marcas da sua cidade que buscam exatamente o seu perfil e estilo de criação. As oportunidades vêm até você.",
                     hT2: "Crie com liberdade", hD2: "Receba os briefings detalhados e use sua autenticidade para gravar. Você decide como expressar a mensagem da marca, mantendo a sua essência.",
                     hT3: "Gerencie suas parcerias", hD3: "Acompanhe o status das suas missões, edições solicitadas e os prazos de entrega em um painel gamer simples e organizado.",
@@ -719,7 +752,7 @@
                 "#hero-text-block", "#hero-badge", "#hero-floating-card", "#hero-image-frame",
                 "#features-header-block", ".feature-card",
                 "#data-section-block .data-content", "#data-img", "#data-banner",
-                "#how-steps-container", "#step-display-image"
+                "#how-main-title", "#how-steps-container", "#step-display-image"
             ];
 
             // ----------------------------------------------------
@@ -818,7 +851,8 @@
                             document.getElementById("pill-overlay").style.background = d.overlayColor;
                             document.getElementById("data-banner").textContent = d.dataBanner;
 
-                            // 4ª Dobra (Acordeão)
+                            // 4ª Dobra (Acordeão e Título)
+                            document.getElementById("how-main-title").innerHTML = d.howMainTitle;
                             document.getElementById("how-t1").textContent = d.hT1;
                             document.getElementById("how-d1").textContent = d.hD1;
                             document.getElementById("how-t2").textContent = d.hT2;
