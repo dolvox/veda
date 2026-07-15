@@ -3,874 +3,972 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plast | Landing Page</title>
-
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Biblioteca de Animação GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
+    <title>Plast - Conecte. Colabore. Cresça.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ==========================================
-           VARIÁVEIS E IDENTIDADE VISUAL
-           ========================================== */
         :root {
-            --bg-dark: #05010d; 
-            --primary-purple: #9d71fa;
-            --primary-yellow: #facc15;
-            --text-light: #ffffff;
-            --text-muted: #a19bb0;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-color: #050508;
+            --card-bg: #0d0d14;
+            --text-color: #ffffff;
+            --text-muted: #94a3b8;
+            --accent-purple: #6366f1;
+            --accent-purple-glow: rgba(99, 102, 241, 0.15);
+            --accent-gold: #facc15;
+            --accent-gold-glow: rgba(250, 204, 21, 0.2);
+            --cream-bg: #fdfbf7;
+            --cream-text: #1e293b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .highlight { color: var(--primary-yellow); }
-        .highlight-purple { color: var(--primary-purple); }
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-        /* ==========================================
-           HEADER / NAVBAR
-           ========================================== */
+        /* Header / Navbar */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
             border-bottom: 1px solid var(--border-color);
-            flex-wrap: wrap;
-            gap: 20px;
-            position: relative;
-            z-index: 10;
+            position: sticky;
+            top: 0;
+            background-color: rgba(5, 5, 8, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, var(--primary-purple) 30%, var(--primary-yellow) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        nav { display: flex; gap: 48px; }
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        nav a:hover { color: var(--text-light); }
-
-        .header-toggle {
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 50px;
-            padding: 2px;
-            position: relative;
-            width: 220px;
-            height: 42px;
-            cursor: pointer;
-            user-select: none;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 24px;
+            text-decoration: none;
+            color: var(--text-color);
         }
 
-        .toggle-active-pill {
-            position: absolute;
-            top: 2px; left: 2px;
-            width: calc(50% - 2px); height: calc(100% - 4px);
-            border-radius: 50px;
-            background: linear-gradient(90deg, rgba(250, 204, 21, 1) 0%, rgba(250, 204, 21, 0.2) 80%, transparent 100%);
-            transition: var(--transition-smooth);
-            display: flex; align-items: center;
-            padding-left: 14px; z-index: 1;
-        }
-        .toggle-active-pill::before {
-            content: ''; width: 8px; height: 8px; background: #ffffff; border-radius: 50%;
-            box-shadow: 0 0 10px #ffffff, 0 0 5px var(--primary-yellow);
-        }
-        .header-toggle.criador-active .toggle-active-pill {
-            left: 50%;
-            background: linear-gradient(270deg, rgba(250, 204, 21, 1) 0%, rgba(250, 204, 21, 0.2) 80%, transparent 100%);
-            padding-left: 0; padding-right: 14px; justify-content: flex-end;
+        .logo-box {
+            border: 2px solid #ff6b00;
+            padding: 2px 8px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #2e0854, #110224);
         }
 
-        .toggle-option {
-            flex: 1; text-align: center; font-size: 0.85rem; font-weight: 600;
-            color: rgba(255, 255, 255, 0.3); z-index: 2; transition: color 0.3s ease; line-height: 38px;
-        }
-        .toggle-option.active { color: #ffffff; }
-
-        .auth-container { display: flex; align-items: center; gap: 20px; }
-        .btn-login {
-            background: transparent; border: none; color: var(--text-muted);
-            font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: color 0.3s ease;
-        }
-        .btn-login:hover { color: var(--text-light); }
-        .btn-register {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
-            color: var(--text-light); padding: 10px 20px; border-radius: 8px; font-size: 0.9rem;
-            font-weight: 500; cursor: pointer; transition: var(--transition-smooth);
-        }
-        .btn-register:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
-
-        /* ==========================================
-           HERO SECTION (1ª Dobra)
-           ========================================== */
-        .hero {
-            display: flex; flex-direction: column-reverse;
-            padding: 80px 24px 100px; max-width: 1300px; margin: 0 auto; gap: 48px; width: 100%;
-        }
-        .hero-content { width: 100%; display: flex; flex-direction: column; justify-content: center; }
-        .badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(157, 113, 250, 0.08); border: 1px solid rgba(157, 113, 250, 0.25);
-            padding: 8px 16px; border-radius: 50px; color: var(--primary-purple);
-            font-size: 0.85rem; font-weight: 500; margin-bottom: 24px; width: max-content;
-        }
-        .hero-content h1 { font-size: 2.4rem; line-height: 1.2; font-weight: 700; margin-bottom: 20px; letter-spacing: -1px; }
-        .hero-content p { font-size: 1rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 32px; }
-        
-        .hero-buttons { display: flex; flex-direction: column; gap: 12px; }
-        .btn-primary {
-            background: var(--primary-purple); color: var(--text-light); border: none;
-            padding: 16px 28px; border-radius: 12px; font-size: 1rem; font-weight: 600;
-            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
-            transition: var(--transition-smooth); box-shadow: 0 4px 20px rgba(157, 113, 250, 0.25);
-        }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(157, 113, 250, 0.45); background: #8b5cf6; }
-        .btn-secondary {
-            background: transparent; border: 1px solid rgba(255, 255, 255, 0.15); color: white;
-            padding: 16px 28px; border-radius: 12px; font-size: 1rem; font-weight: 500;
-            cursor: pointer; text-align: center; transition: var(--transition-smooth);
-        }
-        .btn-secondary:hover { background: rgba(255, 255, 255, 0.05); }
-
-        .hero-visual { width: 100%; display: flex; justify-content: center; position: relative; }
-        .neon-frame {
-            width: 100%; max-width: 450px; height: 350px; border-radius: 24px;
-            border: 3px solid var(--primary-yellow);
-            box-shadow: 0 0 35px rgba(250, 204, 21, 0.4), inset 0 0 15px rgba(250, 204, 21, 0.2);
-            position: relative; background: url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=600&auto=format&fit=crop') center/cover no-repeat;
-            transition: var(--transition-smooth);
-        }
-        .floating-card {
-            position: absolute; bottom: -20px; left: 12px; right: 12px;
-            background: rgba(10, 5, 20, 0.9); backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08); padding: 14px 20px;
-            border-radius: 16px; display: flex; align-items: center; gap: 14px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
-        }
-        .card-icon {
-            width: 38px; height: 38px; background: rgba(250, 204, 21, 0.15); 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: var(--primary-yellow); font-size: 1.1rem; flex-shrink: 0;
-        }
-        .card-text { display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
-        .card-text h4 { font-size: 0.9rem; font-weight: 600; color: #ffffff; }
-        .card-text p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; }
-
-        /* ==========================================
-           FEATURES SECTION (2ª Dobra)
-           ========================================== */
-        .features { max-width: 1300px; margin: 0 auto; padding: 60px 24px 100px; width: 100%; }
-        .features-header { display: flex; flex-direction: column; gap: 32px; margin-bottom: 60px; }
-        .features-title-col h2 { font-size: 2.2rem; line-height: 1.3; font-weight: 700; letter-spacing: -1px; max-width: 600px; }
-        .features-subtitle-col { padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .features-subtitle-col p { font-size: 1.1rem; line-height: 1.6; color: var(--text-muted); max-width: 400px; }
-        
-        .features-grid { display: grid; grid-template-columns: 1fr; gap: 40px; position: relative; }
-        .features-line {
-            display: none; position: absolute; top: 100px; left: 50px; right: 50px;
-            height: 1px; background: rgba(157, 113, 250, 0.3); z-index: 0;
-        }
-        .feature-card {
-            background: #0a0614; border: 1px solid rgba(157, 113, 250, 0.15); border-radius: 20px;
-            padding: 40px 32px 32px; position: relative; z-index: 1; display: flex; flex-direction: column; height: 100%;
-            transition: var(--transition-smooth);
-        }
-        .feature-card:hover { border-color: rgba(157, 113, 250, 0.4); transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        .feature-number {
-            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-            background: var(--bg-dark); padding: 0 16px; color: var(--primary-purple);
-            font-weight: 600; font-size: 1.1rem; letter-spacing: 1px;
-        }
-        .feature-icon-wrapper {
-            width: 64px; height: 64px; border-radius: 50%; background: rgba(157, 113, 250, 0.08);
-            box-shadow: 0 0 35px rgba(157, 113, 250, 0.2); display: flex; align-items: center; justify-content: center;
-            margin-bottom: 24px; color: #d8c4ff;
-        }
-        .feature-icon-wrapper svg { width: 32px; height: 32px; }
-        .feature-card h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 16px; color: var(--text-light); }
-        .feature-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 32px; flex-grow: 1; }
-        
-        .feature-footer {
-            display: flex; align-items: center; gap: 12px; color: var(--primary-yellow);
-            font-size: 0.9rem; font-weight: 600; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .feature-footer svg { width: 24px; height: 24px; flex-shrink: 0; }
-
-        /* ==========================================
-           DATA SECTION (3ª Dobra)
-           ========================================== */
-        .data-section {
-            max-width: 1300px;
-            margin: 0 auto;
-            /* Aumentei o padding inferior para empurrar a 4ª dobra para baixo */
-            padding: 40px 24px 140px; 
-            width: 100%;
-        }
-        .data-layout { display: flex; flex-direction: column-reverse; gap: 60px; align-items: center; position: relative; }
-        .data-content { flex: 1; display: flex; flex-direction: column; gap: 20px; }
-        .data-content h2 { font-size: 2.2rem; line-height: 1.3; font-weight: 700; letter-spacing: -1px; max-width: 650px; }
-        .data-content p.subtitle { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; max-width: 500px; }
-        
-        .stats-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
-        .stat-item { display: flex; flex-direction: column; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .stat-header { display: flex; align-items: center; gap: 10px; color: var(--text-light); font-size: 1.5rem; font-weight: 700; }
-        .stat-header span { font-size: 1.2rem; }
-        .stat-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
-        .stat-source { font-size: 0.8rem; color: rgba(255,255,255,0.3); margin-top: auto; padding-top: 10px; }
-
-        .data-visual { width: 100%; display: flex; justify-content: center; position: relative; }
-        .pill-image-container {
-            width: 100%; max-width: 320px; height: 750px; border-radius: 200px;
-            overflow: hidden; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-        .pill-overlay {
-            position: absolute; top: 0; left: 0; right: 0; height: 45%;
-            background: linear-gradient(180deg, var(--primary-yellow) 0%, rgba(250, 204, 21, 0) 100%);
-            z-index: 2; transition: background 0.4s ease;
-        }
-        .pill-img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1; transition: var(--transition-smooth); }
-
-        .data-bottom-banner {
-            background: #faf6f0; color: #05010d; padding: 24px 32px; border-radius: 16px;
-            font-weight: 600; font-size: 1rem; line-height: 1.5; text-align: center;
-            /* Margens ajustadas para não invadir a próxima dobra */
-            margin-top: 60px; 
-            margin-bottom: 20px;
-            width: 100%; max-width: 900px; margin-left: auto; margin-right: auto;
-            box-shadow: 0 10px 30px rgba(250, 204, 21, 0.1);
+        .logo-orange {
+            color: #ff6b00;
         }
 
-        /* ==========================================
-           HOW IT WORKS SECTION (4ª Dobra)
-           ========================================== */
-        .how-section {
-            max-width: 1300px;
-            margin: 0 auto;
-            /* Mais respiro no topo para separar bem do banner branco */
-            padding: 40px 24px 120px;
-            width: 100%;
-        }
-
-        /* Novo título adicionado conforme solicitado */
-        .how-header {
-            text-align: center;
-            margin-bottom: 70px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .how-header h2 {
-            font-size: 1.8rem;
-            line-height: 1.4;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-        .how-header h2 .highlight-purple {
-            color: var(--primary-purple);
-        }
-        
-        .how-layout {
+        .nav-links {
             display: flex;
-            flex-direction: column;
-            gap: 60px;
+            gap: 32px;
+            list-style: none;
         }
 
-        /* Lado esquerdo: Acordeão */
-        .how-steps-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .step-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        /* Botão/Título com fundo sólido e elegante */
-        .step-title {
-            background: #15111c; 
+        .nav-links a {
             color: var(--text-muted);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-size: 1.1rem;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-color);
+        }
+
+        /* Toggle Button (Empresa / Criador) */
+        .toggle-container {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .toggle-btn {
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: left;
-            width: max-content;
-            max-width: 100%;
+            transition: all 0.3s;
+            text-decoration: none;
         }
 
-        .step-item:hover .step-title {
-            background: #1c1726;
-            color: var(--text-light);
+        .toggle-btn.empresa {
+            background-color: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 12px var(--accent-gold-glow);
         }
 
-        /* Estado ativo do Título */
-        .step-item.active .step-title {
-            background: #251e33; 
-            border-color: rgba(157, 113, 250, 0.4);
-            color: var(--text-light);
+        .toggle-btn.criador {
+            color: var(--text-muted);
         }
 
-        /* Corpo do texto */
-        .step-body {
+        .toggle-btn.criador:hover {
+            color: var(--text-color);
+        }
+
+        .nav-actions {
             display: flex;
+            align-items: center;
             gap: 16px;
-            overflow: hidden;
-            max-height: 0;
-            opacity: 0;
-            transition: all 0.4s ease-in-out;
-            margin-top: 0;
-            padding-left: 24px;
         }
 
-        .step-item.active .step-body {
-            max-height: 200px;
-            opacity: 1;
-            margin-top: 12px;
+        .btn-login {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .btn-login:hover {
+            color: var(--text-muted);
+        }
+
+        .btn-register {
+            background-color: transparent;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-register:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            background-color: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #a5b4fc;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             margin-bottom: 24px;
         }
 
-        /* A linha em "L" do esboço */
-        .step-l-shape {
-            width: 24px;
-            border-left: 2px solid var(--primary-purple);
-            border-bottom: 2px solid var(--primary-purple);
-            border-bottom-left-radius: 8px;
-            margin-bottom: 8px; 
-            flex-shrink: 0;
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
         }
 
-        .step-text {
-            font-size: 0.95rem;
+        .text-gold {
+            color: var(--accent-gold);
+            text-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+        }
+
+        .text-purple {
+            color: #a78bfa;
+        }
+
+        .hero-content p {
+            font-size: 16px;
             color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 520px;
             line-height: 1.6;
-            max-width: 450px;
-            padding-top: 8px;
         }
 
-        /* Lado direito: Imagem (Sólida, sem brilho) */
-        .how-image-container {
-            flex: 1;
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-purple), #4f46e5);
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(99, 102, 241, 0.45);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            background-color: rgba(255, 255, 255, 0.02);
+            color: var(--text-color);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-hover);
+        }
+
+        /* Hero Right Area */
+        .hero-image-wrapper {
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .how-image-box {
-            width: 100%;
-            max-width: 600px;
-            aspect-ratio: 4/3;
-            border-radius: 16px;
+        .hero-image-box {
+            border: 3px solid var(--accent-gold);
+            border-radius: 24px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #0a0614; 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            position: relative;
+            box-shadow: 0 0 35px var(--accent-gold-glow);
+            aspect-ratio: 1;
+            width: 100%;
+            max-width: 440px;
         }
 
-        .how-image-box img {
+        .hero-image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.3s ease;
         }
 
-        /* ==========================================
-           MEDIA QUERIES (DESKTOP)
-           ========================================== */
-        @media (min-width: 1024px) {
-            header { padding: 20px 80px; }
-            .hero { flex-direction: row; padding: 120px 80px 140px; gap: 80px; align-items: center; }
-            .hero-content { width: 50%; }
-            .hero-content h1 { font-size: 3.5rem; line-height: 1.1; }
-            .hero-buttons { flex-direction: row; }
-            .btn-primary, .btn-secondary { width: max-content; }
-            .hero-visual { width: 50%; justify-content: flex-end; }
-            .neon-frame { width: 450px; height: 500px; }
-            .floating-card { left: -35px; right: auto; width: 315px; bottom: -25px; }
-            
-            .features { padding: 80px 80px 120px; }
-            .features-header { flex-direction: row; justify-content: space-between; align-items: flex-end; }
-            .features-subtitle-col { border-top: none; border-left: 1px solid rgba(255,255,255,0.1); padding-top: 0; padding-left: 40px; margin-bottom: 8px; }
-            .features-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
-            .features-line { display: block; }
-
-            .data-section { padding: 80px 80px 160px; }
-            .data-layout { flex-direction: row; justify-content: space-between; align-items: center; gap: 80px; }
-            .data-content { width: 60%; }
-            .data-content h2 { font-size: 2.8rem; }
-            .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-            .stat-item { border-top: none; border-left: 1px solid rgba(255,255,255,0.1); padding-top: 0; padding-left: 24px; }
-            .stat-item:first-child { border-left: none; padding-left: 0; }
-            .data-visual { width: 40%; justify-content: flex-end; }
-            .data-bottom-banner { margin-top: 90px; }
-
-            .how-section { padding: 60px 80px 120px; }
-            .how-header h2 { font-size: 2.2rem; }
-            .how-layout { flex-direction: row; align-items: center; gap: 80px; }
-            .how-steps-container { width: 50%; }
-            .how-image-container { width: 50%; justify-content: flex-end; }
+        .floating-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            background-color: rgba(13, 13, 20, 0.9);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        @media (max-width: 768px) {
-            nav { display: none; }
-            header { justify-content: center; text-align: center; }
-            .logo { width: 100%; }
-            .auth-container { width: 100%; justify-content: center; }
-            .pill-image-container { height: 500px; } 
-            
-            .step-title {
-                white-space: normal;
-                padding: 12px 24px;
+        .badge-icon {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge-text h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .badge-text p {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Section 2: Cards */
+        .sec-cards {
+            padding: 100px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .sec-header {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: end;
+        }
+
+        .sec-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .sec-header-right {
+            border-left: 2px solid var(--border-color);
+            padding-left: 30px;
+        }
+
+        .sec-header-right p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .card-top {
+            margin-bottom: 30px;
+        }
+
+        .card-num {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .card-footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 24px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-footer-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .icon-yellow {
+            width: 32px;
+            height: 32px;
+            stroke: var(--accent-gold);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Section 3 & 4 Layouts (Stats and Capsule) */
+        .sec-stats {
+            padding: 100px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stats-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .stats-left h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .stats-left .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .stat-num {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .stat-source {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .capsule-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .capsule-card {
+            width: 100%;
+            max-width: 300px;
+            height: 480px;
+            border-radius: 150px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .capsule-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Purple theme adjustments for Section 4 */
+        .capsule-card.purple-gradient {
+            background: linear-gradient(180deg, #1d152c 0%, #0d0d14 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .capsule-gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(99,102,241,0.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Full Width Cream Callout Banner */
+        .callout-banner {
+            background-color: var(--cream-bg);
+            color: var(--cream-text);
+            border-radius: 20px;
+            padding: 40px 60px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .callout-banner p {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Section 5 (How it Works / List with Spacing Adjustment) */
+        .sec-how-it-works {
+            padding: 120px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .how-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 90px auto; /* Maior distância entre o título principal e os blocos abaixo */
+        }
+
+        .how-header h2 {
+            font-size: 26px;
+            line-height: 1.45;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px; /* Maior distância horizontal entre os botões de texto e a imagem */
+            align-items: flex-start;
+        }
+
+        .how-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px; /* Maior distância entre os próprios botões interativos */
+        }
+
+        .how-option {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .how-option:hover {
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .how-option.active {
+            border-left: 4px solid var(--accent-purple);
+            background: rgba(99, 102, 241, 0.06);
+            border-color: rgba(99, 102, 241, 0.3);
+            border-left-color: var(--accent-purple);
+        }
+
+        .how-option-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .how-option-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-top: 14px;
+            padding-left: 2px;
+        }
+
+        .how-image-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .how-image-container img {
+            width: 100%;
+            max-width: 460px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0;
+            background-color: #020204;
+        }
+
+        .footer-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 48px;
+            }
+
+            .hero-content p {
+                margin: 0 auto 40px auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .sec-header {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .sec-header-right {
+                border-left: none;
+                padding-left: 0;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-layout {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capsule-wrapper {
+                order: -1;
+            }
+
+            .how-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .how-image-container {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- CABEÇALHO -->
     <header>
-        <div class="logo">Plast</div>
-        <nav>
-            <a href="#">Recursos</a>
-            <a href="#">Soluções</a>
-        </nav>
-        <div class="header-toggle" id="mode-toggle">
-            <div class="toggle-active-pill"></div>
-            <div class="toggle-option active" data-mode="empresa">Empresa</div>
-            <div class="toggle-option" data-mode="criador">Criador</div>
-        </div>
-        <div class="auth-container">
-            <button class="btn-login">Login</button>
-            <button class="btn-register">Cadastrar</button>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <span class="logo-box">P</span><span class="logo-text">last</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#solucoes">Soluções</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+
+            <div class="toggle-container">
+                <a href="#empresa" class="toggle-btn empresa">Empresa</a>
+                <a href="#criador" class="toggle-btn criador">Criador</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="#login" class="btn-login">Login</a>
+                <a href="#cadastrar" class="btn-register">Cadastrar</a>
+            </div>
         </div>
     </header>
 
-    <!-- PRIMEIRA DOBRA (HERO) -->
-    <main class="hero">
-        <div class="hero-content">
-            <div class="badge" id="hero-badge">👥 Conecte. Colabore. Cresça.</div>
-            <div class="hero-text-container" id="hero-text-block">
-                <h1 id="hero-title">Se <span class="highlight">conecte</span> com diversos criativos e <span class="highlight">influencers</span> da sua <span class="highlight">cidade</span>.</h1>
-                <p id="hero-subtitle">Aumente sua escala de <span class="highlight-purple">branding</span> da empresa em toda a cidade e leve sua marca para mais pessoas, todos os dias.</p>
+    <main class="container">
+
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    Conecte. Colabore. Cresça.
+                </div>
+                <h1>Se <span class="text-gold">conecte</span> com diversos criativos e <span class="text-gold">influencers</span> da sua <span class="text-gold">cidade</span>.</h1>
+                <p>Aumente sua escala de <span class="text-purple">branding</span> da empresa em toda a cidade e leve sua marca para mais pessoas, todos os dias.</p>
+                <div class="hero-buttons">
+                    <a href="#começar" class="btn-primary">Começar agora →</a>
+                    <a href="#saiba-mais" class="btn-secondary">Saiba mais</a>
+                </div>
             </div>
-            <div class="hero-buttons">
-                <button class="btn-primary" id="btn-main">Começar agora &rarr;</button>
-                <button class="btn-secondary">Saiba mais</button>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="neon-frame" id="hero-image-frame">
-                <div class="floating-card" id="hero-floating-card">
-                    <div class="card-icon" id="card-icon">📈</div>
-                    <div class="card-text">
-                        <h4 id="card-title">Mais visibilidade</h4>
-                        <p id="card-subtitle">+ alcance • + conexões • + resultados</p>
+            <div class="hero-image-wrapper">
+                <div class="hero-image-box">
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=600" alt="Camera Shooting Scene">
+                </div>
+                <div class="floating-badge">
+                    <div class="badge-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <div class="badge-text">
+                        <h4>Mais visibilidade</h4>
+                        <p>+ alcance • + conexões • + resultados</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="sec-cards" id="recursos">
+            <div class="sec-header">
+                <h2>Marketing de influência não é só seguidores. Mas sim em criar <span class="text-purple">identificação</span> com quem compra de <span class="text-gold">você</span>.</h2>
+                <div class="sec-header-right">
+                    <p>Os melhores conteúdos não começam com uma câmera. Começam com a <span class="text-gold">pessoa certa</span>.</p>
+                </div>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-num">01</div>
+                        <h3>Economia de tempo</h3>
+                        <p class="card-desc">Nós reunimos e organizamos os criadores da sua cidade para que você encontre as pessoas certas sem precisar passar horas procurando no Instagram ou pedindo indicações.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="icon-yellow" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        <span class="card-footer-text">+ Tempo para o que realmente importa</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-num">02</div>
+                        <h3>Talentos em sua cidade</h3>
+                        <p class="card-desc">Filtre criadores por localização, nicho, estilo de conteúdo e público para encontrar quem realmente combina com a sua empresa.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="icon-yellow" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        <span class="card-footer-text">Match perfeito entre marca e criador</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-num">03</div>
+                        <h3>Conteúdo que conecta</h3>
+                        <p class="card-desc">Seu cliente esquece anúncios. Mas lembra de histórias e pessoas. Conteúdos autênticos criam identificação e tornam sua empresa mais lembrada.</p>
+                    </div>
+                    <div class="card-footer">
+                        <svg class="icon-yellow" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <span class="card-footer-text">Mais conexão, mais confiança, mais resultado</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec-stats" id="solucoes">
+            <div class="stats-layout">
+                <div class="stats-left">
+                    <h2>Não acredite apenas na nossa palavra. Os <span class="text-gold">dados mostram</span> por quê.</h2>
+                    <p class="subtitle">Os <span class="text-gold">consumidores mudaram</span> a forma como descobrem empresas e decidem suas compras.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-num">2,5x</span>
+                            <p class="stat-desc">Conteúdos gerados por usuários são percebidos como mais autênticos do que conteúdos produzidos pelas próprias marcas ou influenciadores muito grandes.</p>
+                            <span class="stat-source">Fonte: Nielsen / Bazaarvoices</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">79%</span>
+                            <p class="stat-desc">Consumidores afirmam que conteúdos gerados por pessoas semelhantes aumentam muito as suas decisões de compra de um produto ou serviço local.</p>
+                            <span class="stat-source">Fonte: Stackla</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">92%</span>
+                            <p class="stat-desc">Consumidores confiam significativamente mais em recomendações espontâneas de pessoas do que em publicidade institucional tradicional.</p>
+                            <span class="stat-source">Fonte: Nielsen</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="capsule-wrapper">
+                    <div class="capsule-card">
+                        <div class="capsule-gradient-overlay" style="background: linear-gradient(180deg, rgba(250,204,21,0.2) 0%, transparent 60%);"></div>
+                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=600" alt="LinkedIn Screen Capsule App Mockup">
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout-banner">
+                <p>Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?</p>
+            </div>
+        </section>
+
+        <section class="sec-stats" id="criador-secao">
+            <div class="stats-layout">
+                <div class="capsule-wrapper">
+                    <div class="capsule-card purple-gradient">
+                        <div class="capsule-gradient-overlay" style="background: linear-gradient(180deg, rgba(167,139,250,0.3) 0%, transparent 60%);"></div>
+                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=600" alt="Purple Creative Capsule Glow">
+                    </div>
+                </div>
+
+                <div class="stats-left">
+                    <h2>O mercado mudou. Seu <span class="text-purple">talento vale</span> muito mais do que likes.</h2>
+                    <p class="subtitle">As marcas locais estão <span class="text-purple">buscando</span> criadores autênticos como você para se conectarem diretamente com o público da cidade.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-num" style="color: #a78bfa;">UGC</span>
+                            <p class="stat-desc">Marcas estão investindo pesado em User Generated Content (Conteúdo Gerado pelo Usuário). Sua autenticidade é a nova e verdadeira moeda de troca.</p>
+                            <span class="stat-source">Oportunidade real</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num" style="color: #a78bfa;">R$</span>
+                            <p class="stat-desc">Criadores locais estão de fato monetizando suas redes e fechando ótimas parcerias comerciais sem precisar ter milhões de seguidores.</p>
+                            <span class="stat-source">Micro-influência</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num" style="color: #a78bfa;">100%</span>
+                            <p class="stat-desc">Você tem controle absoluto da sua agenda. Escolha quais missões locais aceitar e com quais marcas da sua cidade deseja colaborar de verdade.</p>
+                            <span class="stat-source">Liberdade criativa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout-banner" style="background-color: var(--cream-bg);">
+                <p>A era de criar conteúdo de graça acabou. Jogue o jogo onde você também sai ganhando e seja muito bem recompensado pelo seu talento único.</p>
+            </div>
+        </section>
+
+        <section class="sec-how-it-works">
+            <div class="how-header">
+                <h2>Uma plataforma que não te trata como um número.<br>
+                Feche parcerias locais com marcas da sua cidade e<br>
+                fale a língua do seu público.</h2>
+            </div>
+            
+            <div class="how-grid">
+                <div class="how-list">
+                    <div class="how-option active">
+                        <div class="how-option-title">
+                            <span>Encontre as melhores missões</span>
+                        </div>
+                        <p class="how-option-desc" style="display: block;">Receba recomendações exclusivas de marcas da sua cidade que buscam exatamente o seu perfil e estilo de criação. As oportunidades vêm até você.</p>
+                    </div>
+
+                    <div class="how-option">
+                        <div class="how-option-title">
+                            <span>Crie com liberdade</span>
+                        </div>
+                        <p class="how-option-desc" style="display: none;">Tenha autonomia para planejar e executar a comunicação que seu público já conhece, mas sempre garantindo que os objetivos da marca parceira sejam atingidos de forma criativa e autêntica.</p>
+                    </div>
+
+                    <div class="how-option">
+                        <div class="how-option-title">
+                            <span>Gerencie suas parcerias</span>
+                        </div>
+                        <p class="how-option-desc" style="display: none;">Um painel totalmente organizado para que você não perca nenhum prazo, aprovação ou alteração e consiga manter o foco unicamente na criação do conteúdo.</p>
+                    </div>
+
+                    <div class="how-option">
+                        <div class="how-option-title">
+                            <span>Receba suas recompensas</span>
+                        </div>
+                        <p class="how-option-desc" style="display: none;">Cumpra as missões aprovadas com as marcas e receba seu pagamento diretamente no app, sem burocracias, taxas escondidas ou dor de cabeça com cobranças intermináveis.</p>
+                    </div>
+                </div>
+
+                <div class="how-image-container">
+                    <img src="https://images.unsplash.com/photo-152202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" alt="Criativos trabalhando juntos em notebooks" id="interactive-img">
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- SEGUNDA DOBRA (FEATURES) -->
-    <section class="features">
-        <div class="features-header" id="features-header-block">
-            <div class="features-title-col">
-                <div class="badge" id="feat-badge" style="margin-bottom: 20px;">🌟 Por que escolher a Plast?</div>
-                <h2 id="feat-title">Marketing de influência não é só seguidores. Mas sim em criar <span class="highlight-purple">identificação</span> com quem compra de <span class="highlight">você.</span></h2>
-            </div>
-            <div class="features-subtitle-col">
-                <p id="feat-subtitle">Os melhores conteúdos não começam com uma câmera. Começam com a <span class="highlight">pessoa certa.</span></p>
-            </div>
+    <footer>
+        <div class="container footer-layout">
+            <a href="#" class="logo">
+                <span class="logo-box">P</span><span>last</span>
+            </a>
+            <p class="footer-text">© 2026 Plast S.A. Todos os direitos reservados.</p>
         </div>
-        <div class="features-grid" id="features-cards-block">
-            <div class="features-line"></div>
-            <!-- Card 01 -->
-            <div class="feature-card">
-                <div class="feature-number">01</div>
-                <div class="feature-icon-wrapper"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-                <h3 id="c1-title">Economia<br>de tempo</h3>
-                <p id="c1-text">Nós reunimos e organizamos os criadores da sua cidade para que você encontre as pessoas certas sem precisar passar horas procurando no Instagram ou pedindo indicações.</p>
-                <div class="feature-footer"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> <span id="c1-foot">+ Tempo para o que realmente importa</span></div>
-            </div>
-            <!-- Card 02 -->
-            <div class="feature-card">
-                <div class="feature-number">02</div>
-                <div class="feature-icon-wrapper"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"></path></svg></div>
-                <h3 id="c2-title">Talentos em<br>sua cidade</h3>
-                <p id="c2-text">Filtre criadores por localização, nicho, estilo de conteúdo e público para encontrar quem realmente combina com a sua empresa.</p>
-                <div class="feature-footer"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 15h2.25m8.024-9.75c.011.05.028.1.052.148.591 1.2.924 2.55.924 3.977a8.96 8.96 0 01-.999 4.125m.023-8.25c-.076-.365.183-.75.575-.75h.908c.889 0 1.713.518 1.972 1.368.339 1.11.521 2.287.521 3.507 0 1.553-.295 3.036-.831 4.398C20.613 14.547 19.833 15 19 15h-1.053c-.472 0-.745-.556-.5-.96a8.95 8.95 0 00.303-.54m.023-8.25H16.48a4.5 4.5 0 01-1.423-.23l-3.114-1.04a4.5 4.5 0 00-1.423-.23H6.504c-.361 0-.633.36-.554.715.111.5.198 1.013.256 1.536m0 0A6.002 6.002 0 0111.45 6.5h.525c.361 0 .633-.36.554-.715m-2.274 4.215a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0zM18.75 18.75a8.96 8.96 0 01-2.32 1.503"></path></svg> <span id="c2-foot">Match perfeito entre marca e criador</span></div>
-            </div>
-            <!-- Card 03 -->
-            <div class="feature-card">
-                <div class="feature-number">03</div>
-                <div class="feature-icon-wrapper"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"></path></svg></div>
-                <h3 id="c3-title">Conteúdo que<br>conecta</h3>
-                <p id="c3-text">Seu cliente esquece anúncios. Mas lembra de histórias e pessoas. Conteúdos autênticos criam identificação e tornam sua empresa mais lembrada.</p>
-                <div class="feature-footer"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"></path></svg> <span id="c3-foot">Mais conexão, mais confiança...</span></div>
-            </div>
-        </div>
-    </section>
+    </footer>
 
-    <!-- TERCEIRA DOBRA (DADOS / PROVA SOCIAL) -->
-    <section class="data-section" id="data-section-block">
-        <div class="data-layout">
-            <div class="data-content">
-                <h2 id="data-title">Não acredite apenas na nossa palavra. Os <span class="highlight">dados mostram</span> por quê.</h2>
-                <p class="subtitle" id="data-subtitle">Os <span class="highlight">consumidores mudaram</span> a forma como descobrem empresas e decidem suas compras.</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-header"><span id="stat1-icon">✍️</span> <span id="stat1-val">2,5x</span></div>
-                        <p class="stat-desc" id="stat1-desc">Conteúdos gerados por usuários são percebidos como mais autênticos do que conteúdos produzidos pelas próprias marcas, ou influenciadores muito grandes.</p>
-                        <span class="stat-source" id="stat1-src">Fonte: Nielsen / Bazaarvoices</span>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-header"><span id="stat2-icon">📊</span> <span id="stat2-val">79%</span></div>
-                        <p class="stat-desc" id="stat2-desc">Consumidores afirmam que conteúdos gerados por pessoas semelhantes aumenta decisões de compra.</p>
-                        <span class="stat-source" id="stat2-src">Fonte: Stackla</span>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-header"><span id="stat3-icon">🤝</span> <span id="stat3-val">92%</span></div>
-                        <p class="stat-desc" id="stat3-desc">Consumidores confiam mais em recomendações de pessoas do que em publicidade tradicional.</p>
-                        <span class="stat-source" id="stat3-src">Fonte: Nielsen</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="data-visual">
-                <div class="pill-image-container">
-                    <div class="pill-overlay" id="pill-overlay"></div>
-                    <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=600&auto=format&fit=crop" alt="Imagem Ilustrativa" class="pill-img" id="data-img">
-                </div>
-            </div>
-        </div>
-        
-        <!-- O BANNER BRANCO COM AS MARGENS AJUSTADAS -->
-        <div class="data-bottom-banner" id="data-banner">
-            Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?
-        </div>
-    </section>
-
-    <!-- QUARTA DOBRA (COMO FUNCIONA / ACORDEÃO) -->
-    <section class="how-section" id="how-section-block">
-        
-        <!-- NOVO TÍTULO ADICIONADO AQUI -->
-        <div class="how-header">
-            <h2 id="how-main-title">Uma plataforma que não vende humanos, mas sim uma parceria local, com quem é de sua cidade e que fale a língua do seu público.</h2>
-        </div>
-
-        <div class="how-layout">
-            <!-- Lista interativa esquerda -->
-            <div class="how-steps-container" id="how-steps-container">
-                
-                <!-- Passo 1 -->
-                <div class="step-item active" data-step="0">
-                    <button class="step-title" id="how-t1">Encontre o criador ideal</button>
-                    <div class="step-body">
-                        <div class="step-l-shape"></div>
-                        <p class="step-text" id="how-d1">Utilize nossa inteligência artificial para filtrar e encontrar os criadores de conteúdo mais próximos da sua região. Garantimos o match perfeito com a identidade e os valores da sua marca.</p>
-                    </div>
-                </div>
-
-                <!-- Passo 2 -->
-                <div class="step-item" data-step="1">
-                    <button class="step-title" id="how-t2">Escolha com confiança</button>
-                    <div class="step-body">
-                        <div class="step-l-shape"></div>
-                        <p class="step-text" id="how-d2">Analise o portfólio completo, métricas de engajamento e o histórico de campanhas de cada criador antes de fechar negócio. Transparência total para a sua decisão.</p>
-                    </div>
-                </div>
-
-                <!-- Passo 3 -->
-                <div class="step-item" data-step="2">
-                    <button class="step-title" id="how-t3">Gerencie tudo em um só lugar</button>
-                    <div class="step-body">
-                        <div class="step-l-shape"></div>
-                        <p class="step-text" id="how-d3">Aprove propostas, acompanhe a produção, alinhe roteiros e realize pagamentos de forma 100% segura sem precisar sair da plataforma.</p>
-                    </div>
-                </div>
-
-                <!-- Passo 4 -->
-                <div class="step-item" data-step="3">
-                    <button class="step-title" id="how-t4">Descubra o que realmente funciona</button>
-                    <div class="step-body">
-                        <div class="step-l-shape"></div>
-                        <p class="step-text" id="how-d4">Tenha acesso a relatórios detalhados sobre o desempenho dos conteúdos. Entenda o que atrai seu cliente final e escale seus resultados.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Imagem Direita -->
-            <div class="how-image-container">
-                <div class="how-image-box">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Demonstração do Passo" id="step-display-image">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SCRIPT DE INTERATIVIDADE E ANIMAÇÃO -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Interactive List Logic (Section 5)
+            const options = document.querySelectorAll(".how-option");
+            const imgDisplay = document.getElementById("interactive-img");
             
-            // DADOS DINÂMICOS PARA MODO EMPRESA E CRIADOR
-            const data = {
-                empresa: {
-                    // --- Dobra 1 ---
-                    badge: "👥 Conecte. Colabore. Cresça.",
-                    title: "Se <span class='highlight'>conecte</span> com diversos criativos e <span class='highlight'>influencers</span> da sua <span class='highlight'>cidade</span>.",
-                    subtitle: "Aumente sua escala de <span class='highlight-purple'>branding</span> da empresa em toda a cidade e leve sua marca para mais pessoas, todos os dias.",
-                    btnText: "Começar agora &rarr;",
-                    cardIcon: "📈",
-                    cardTitle: "Mais visibilidade",
-                    cardSub: "+ alcance • + conexões • + resultados",
-                    image: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=600&auto=format&fit=crop",
-                    
-                    // --- Dobra 2 ---
-                    featBadge: "🌟 Por que escolher a Plast?",
-                    featTitle: "Marketing de influência não é só seguidores. Mas sim em criar <span class='highlight-purple'>identificação</span> com quem compra de <span class='highlight'>você.</span>",
-                    featSub: "Os melhores conteúdos não começam com uma câmera. Começam com a <span class='highlight'>pessoa certa.</span>",
-                    c1Title: "Economia<br>de tempo", c1Text: "Nós reunimos e organizamos os criadores da sua cidade para que você encontre as pessoas certas sem precisar passar horas procurando no Instagram ou pedindo indicações.", c1Foot: "+ Tempo para o que realmente importa",
-                    c2Title: "Talentos em<br>sua cidade", c2Text: "Filtre criadores por localização, nicho, estilo de conteúdo e público para encontrar quem realmente combina com a sua empresa.", c2Foot: "Match perfeito entre marca e criador",
-                    c3Title: "Conteúdo que<br>conecta", c3Text: "Seu cliente esquece anúncios. Mas lembra de histórias e pessoas. Conteúdos autênticos criam identificação e tornam sua empresa mais lembrada.", c3Foot: "Mais conexão, mais confiança...",
-
-                    // --- Dobra 3 (DADOS) ---
-                    dataTitle: "Não acredite apenas na nossa palavra. Os <span class='highlight'>dados mostram</span> por quê.",
-                    dataSub: "Os <span class='highlight'>consumidores mudaram</span> a forma como descobrem empresas e decidem suas compras.",
-                    s1Icon: "✍️", s1Val: "2,5x", s1Desc: "Conteúdos gerados por usuários são percebidos como mais autênticos do que conteúdos produzidos pelas próprias marcas, ou influenciadores muito grandes.", s1Src: "Fonte: Nielsen / Bazaarvoices",
-                    s2Icon: "📊", s2Val: "79%", s2Desc: "Consumidores afirmam que conteúdos gerados por pessoas semelhantes aumenta decisões de compra.", s2Src: "Fonte: Stackla",
-                    s3Icon: "🤝", s3Val: "92%", s3Desc: "Consumidores confiam mais em recomendações de pessoas do que em publicidade tradicional.", s3Src: "Fonte: Nielsen",
-                    dataImg: "https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=600&auto=format&fit=crop",
-                    overlayColor: "linear-gradient(180deg, #facc15 0%, rgba(250, 204, 21, 0) 100%)",
-                    dataBanner: "Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?",
-
-                    // --- Dobra 4 (COMO FUNCIONA / ACORDEÃO) ---
-                    howMainTitle: "Uma plataforma que não vende humanos, mas sim uma parceria local, com quem é de sua cidade e que fale a língua do seu público.",
-                    hT1: "Encontre o criador ideal", hD1: "Utilize nossa inteligência artificial para filtrar e encontrar os criadores de conteúdo mais próximos da sua região. Garantimos o match perfeito com a identidade e os valores da sua marca.",
-                    hT2: "Escolha com confiança", hD2: "Analise o portfólio completo, métricas de engajamento e o histórico de campanhas de cada criador antes de fechar negócio. Transparência total para a sua decisão.",
-                    hT3: "Gerencie tudo em um só lugar", hD3: "Aprove propostas, acompanhe a produção, alinhe roteiros e realize pagamentos de forma 100% segura sem precisar sair da plataforma.",
-                    hT4: "Descubra o que realmente funciona", hD4: "Tenha acesso a relatórios detalhados sobre o desempenho dos conteúdos. Entenda o que atrai seu cliente final e escale seus resultados.",
-                    howImages: [
-                        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", // img busca
-                        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80", // img perfil/escolha
-                        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", // img gestao/dashboard
-                        "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=800&q=80"  // img resultados
-                    ]
-                },
-                criador: {
-                    // --- Dobra 1 ---
-                    badge: "🎮 Jogue. Crie. Ganhe.",
-                    title: "O <span class='highlight'>jogo mudou</span>. Seu dia a dia agora é uma <span class='highlight'>Missão</span>.",
-                    subtitle: "Crie conteúdos reais para marcas locais, evolua seu <span class='highlight-purple'>avatar</span> e ganhe recompensas reais em dinheiro ou prêmios.",
-                    btnText: "Começar Jornada &rarr;",
-                    cardIcon: "🏆",
-                    cardTitle: "Sua Jornada Gamer",
-                    cardSub: "Complete missões • Ganhe XP • Resgate Prêmios",
-                    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop",
-
-                    // --- Dobra 2 ---
-                    featBadge: "🚀 Eleve seu nível",
-                    featTitle: "Transforme sua criatividade em <span class='highlight-purple'>recompensas</span>. O seu talento vale <span class='highlight'>muito.</span>",
-                    featSub: "Pare de criar conteúdo de graça. Conecte-se com as marcas certas e seja pago pelo que você ama fazer.",
-                    c1Title: "Missões<br>Locais", c1Text: "Receba propostas de marcas da sua região diretamente no seu painel. Aceite as missões que combinam com seu estilo e dispare sua criatividade.", c1Foot: "Jogue no seu ritmo",
-                    c2Title: "Evolua seu<br>Avatar", c2Text: "Ganhe pontos de experiência (XP) a cada conteúdo aprovado. Suba de nível e desbloqueie parcerias mais exclusivas e lucrativas.", c2Foot: "Seja um Top Player",
-                    c3Title: "Recompensas<br>Reais", c3Text: "Troque seus pontos e conquistas por dinheiro na conta, produtos, ou vouchers incríveis das lojas parceiras da sua cidade.", c3Foot: "Ganhe de verdade",
-
-                    // --- Dobra 3 (DADOS) ---
-                    dataTitle: "O mercado mudou. Seu <span class='highlight-purple'>talento vale</span> muito mais do que likes.",
-                    dataSub: "As marcas locais estão <span class='highlight-purple'>buscando</span> criadores autênticos como você para se conectarem com o público.",
-                    s1Icon: "📱", s1Val: "UGC", s1Desc: "Marcas estão investindo pesado em User Generated Content (Conteúdo Gerado pelo Usuário). Sua autenticidade é a nova moeda.", s1Src: "Oportunidade real",
-                    s2Icon: "💸", s2Val: "R$", s2Desc: "Criadores locais estão monetizando suas redes e fechando parcerias sem precisar ter milhões de seguidores.", s2Src: "Micro-influência",
-                    s3Icon: "🎯", s3Val: "100%", s3Desc: "Você tem controle total. Escolha quais missões aceitar e com quais marcas da sua cidade deseja colaborar.", s3Src: "Liberdade criativa",
-                    dataImg: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop", 
-                    overlayColor: "linear-gradient(180deg, #9d71fa 0%, rgba(157, 113, 250, 0) 100%)", 
-                    dataBanner: "A era de criar conteúdo de graça acabou. Jogue o jogo onde você também sai ganhando e seja recompensado pelo seu talento.",
-
-                    // --- Dobra 4 (COMO FUNCIONA / ACORDEÃO) ---
-                    howMainTitle: "Uma plataforma que não te trata como um número. Feche parcerias locais com marcas da sua cidade e fale a língua do seu público.",
-                    hT1: "Encontre as melhores missões", hD1: "Receba recomendações exclusivas de marcas da sua cidade que buscam exatamente o seu perfil e estilo de criação. As oportunidades vêm até você.",
-                    hT2: "Crie com liberdade", hD2: "Receba os briefings detalhados e use sua autenticidade para gravar. Você decide como expressar a mensagem da marca, mantendo a sua essência.",
-                    hT3: "Gerencie suas parcerias", hD3: "Acompanhe o status das suas missões, edições solicitadas e os prazos de entrega em um painel gamer simples e organizado.",
-                    hT4: "Receba suas recompensas", hD4: "Conteúdo aprovado é dinheiro na conta! Acumule XP, suba de nível e resgate seus pagamentos de forma rápida direto pela plataforma.",
-                    howImages: [
-                        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80", // img missoes
-                        "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80", // img gravacao
-                        "https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=800&q=80", // img painel
-                        "https://images.unsplash.com/photo-1580519542036-ed47f3e42d1b?auto=format&fit=crop&w=800&q=80"  // img dinheiro/recompensa
-                    ]
-                }
-            };
-
-            const toggleOptions = document.querySelectorAll(".toggle-option");
-            const modeToggle = document.getElementById("mode-toggle");
-            let currentMode = "empresa"; // Guarda o estado atual
-
-            // Elementos para animar no switch principal
-            const elementsToAnimate = [
-                "#hero-text-block", "#hero-badge", "#hero-floating-card", "#hero-image-frame",
-                "#features-header-block", ".feature-card",
-                "#data-section-block .data-content", "#data-img", "#data-banner",
-                "#how-main-title", "#how-steps-container", "#step-display-image"
+            // Array of images corresponding to each option
+            const images = [
+                "https://images.unsplash.com/photo-152202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800", // Image 1
+                "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800", // Image 2
+                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800", // Image 3
+                "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&q=80&w=800"  // Image 4
             ];
 
-            // ----------------------------------------------------
-            // LÓGICA DO ACORDEÃO (QUARTA DOBRA)
-            // ----------------------------------------------------
-            const steps = document.querySelectorAll('.step-item');
-            const stepDisplayImage = document.getElementById('step-display-image');
-
-            steps.forEach(step => {
-                const titleBtn = step.querySelector('.step-title');
-                titleBtn.addEventListener('click', () => {
-                    // Se já estiver ativo, não faz nada
-                    if (step.classList.contains('active')) return;
-
-                    // Remove classe de todos
-                    steps.forEach(s => s.classList.remove('active'));
-                    
-                    // Adiciona no clicado
-                    step.classList.add('active');
-
-                    // Pega o índice do passo clicado (0 a 3)
-                    const stepIndex = step.getAttribute('data-step');
-
-                    // Transição da imagem lateral
-                    gsap.to(stepDisplayImage, {
-                        opacity: 0,
-                        duration: 0.2,
-                        onComplete: () => {
-                            // Troca a URL baseada no modo atual e passo clicado
-                            stepDisplayImage.src = data[currentMode].howImages[stepIndex];
-                            gsap.to(stepDisplayImage, { opacity: 1, duration: 0.2 });
-                        }
-                    });
-                });
-            });
-
-            // ----------------------------------------------------
-            // LÓGICA DO TOGGLE PRINCIPAL (EMPRESA / CRIADOR)
-            // ----------------------------------------------------
-            toggleOptions.forEach(option => {
+            options.forEach((option, index) => {
                 option.addEventListener("click", () => {
-                    const mode = option.getAttribute("data-mode");
-                    if(option.classList.contains("active")) return;
-                    
-                    currentMode = mode; // Atualiza variável global de estado
-
-                    toggleOptions.forEach(opt => opt.classList.remove("active"));
-                    option.classList.add("active");
-                    modeToggle.classList.toggle("criador-active", mode === "criador");
-
-                    gsap.to(elementsToAnimate, {
-                        opacity: 0, y: 10, duration: 0.2, stagger: 0.03,
-                        onComplete: () => {
-                            const d = data[mode];
-                            
-                            // 1ª Dobra
-                            document.getElementById("hero-badge").textContent = d.badge;
-                            document.getElementById("hero-title").innerHTML = d.title;
-                            document.getElementById("hero-subtitle").innerHTML = d.subtitle;
-                            document.getElementById("btn-main").innerHTML = d.btnText;
-                            document.getElementById("card-icon").textContent = d.cardIcon;
-                            document.getElementById("card-title").textContent = d.cardTitle;
-                            document.getElementById("card-subtitle").textContent = d.cardSub;
-                            document.getElementById("hero-image-frame").style.backgroundImage = `url('${d.image}')`;
-
-                            // 2ª Dobra
-                            document.getElementById("feat-badge").textContent = d.featBadge;
-                            document.getElementById("feat-title").innerHTML = d.featTitle;
-                            document.getElementById("feat-subtitle").innerHTML = d.featSub;
-                            document.getElementById("c1-title").innerHTML = d.c1Title;
-                            document.getElementById("c1-text").innerHTML = d.c1Text;
-                            document.getElementById("c1-foot").textContent = d.c1Foot;
-                            document.getElementById("c2-title").innerHTML = d.c2Title;
-                            document.getElementById("c2-text").innerHTML = d.c2Text;
-                            document.getElementById("c2-foot").textContent = d.c2Foot;
-                            document.getElementById("c3-title").innerHTML = d.c3Title;
-                            document.getElementById("c3-text").innerHTML = d.c3Text;
-                            document.getElementById("c3-foot").textContent = d.c3Foot;
-
-                            // 3ª Dobra
-                            document.getElementById("data-title").innerHTML = d.dataTitle;
-                            document.getElementById("data-subtitle").innerHTML = d.dataSub;
-                            document.getElementById("stat1-icon").textContent = d.s1Icon;
-                            document.getElementById("stat1-val").textContent = d.s1Val;
-                            document.getElementById("stat1-desc").textContent = d.s1Desc;
-                            document.getElementById("stat1-src").textContent = d.s1Src;
-                            document.getElementById("stat2-icon").textContent = d.s2Icon;
-                            document.getElementById("stat2-val").textContent = d.s2Val;
-                            document.getElementById("stat2-desc").textContent = d.s2Desc;
-                            document.getElementById("stat2-src").textContent = d.s2Src;
-                            document.getElementById("stat3-icon").textContent = d.s3Icon;
-                            document.getElementById("stat3-val").textContent = d.s3Val;
-                            document.getElementById("stat3-desc").textContent = d.s3Desc;
-                            document.getElementById("stat3-src").textContent = d.s3Src;
-                            document.getElementById("data-img").src = d.dataImg;
-                            document.getElementById("pill-overlay").style.background = d.overlayColor;
-                            document.getElementById("data-banner").textContent = d.dataBanner;
-
-                            // 4ª Dobra (Acordeão e Título)
-                            document.getElementById("how-main-title").innerHTML = d.howMainTitle;
-                            document.getElementById("how-t1").textContent = d.hT1;
-                            document.getElementById("how-d1").textContent = d.hD1;
-                            document.getElementById("how-t2").textContent = d.hT2;
-                            document.getElementById("how-d2").textContent = d.hD2;
-                            document.getElementById("how-t3").textContent = d.hT3;
-                            document.getElementById("how-d3").textContent = d.hD3;
-                            document.getElementById("how-t4").textContent = d.hT4;
-                            document.getElementById("how-d4").textContent = d.hD4;
-
-                            // Ao trocar o modo principal, resetamos o acordeão para o Passo 1 (index 0)
-                            steps.forEach(s => s.classList.remove('active'));
-                            steps[0].classList.add('active');
-                            stepDisplayImage.src = d.howImages[0]; // Volta a primeira imagem do novo array
-
-                            // Fade In de tudo
-                            gsap.to(elementsToAnimate, { opacity: 1, y: 0, duration: 0.3, stagger: 0.03 });
-                        }
+                    // Remove active from all
+                    options.forEach(opt => {
+                        opt.classList.remove("active");
+                        opt.querySelector(".how-option-desc").style.display = "none";
                     });
+
+                    // Add active to clicked
+                    option.classList.add("active");
+                    option.querySelector(".how-option-desc").style.display = "block";
+
+                    // Fade image transition
+                    imgDisplay.style.opacity = 0;
+                    setTimeout(() => {
+                        imgDisplay.src = images[index];
+                        imgDisplay.style.opacity = 1;
+                    }, 200);
                 });
             });
         });
