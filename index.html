@@ -278,13 +278,13 @@
         .how-section {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 40px 24px 120px;
+            padding: 40px 24px 80px; /* Reduzido levemente embaixo para não chocar com a 5ª */
             width: 100%;
         }
 
         .how-header {
             text-align: center;
-            margin-bottom: 120px; /* <--- MARGEM CORRIGIDA AQUI */
+            margin-bottom: 80px; 
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
@@ -411,14 +411,16 @@
         .final-cta-section {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 40px 24px 120px;
+            padding: 20px 24px 120px; /* Padding top reduzido para alinhar melhor o fluxo */
             width: 100%;
+            clear: both; /* Garante que não haja sobreposição de elementos flutuantes/absolutos */
         }
 
         .final-button-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px; /* Reduzido para subir o botão (Seu Ponto 3) */
+            padding-top: 10px;
         }
 
         .btn-final-cta {
@@ -430,13 +432,14 @@
             padding: 16px 80px;
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
         }
 
         .btn-final-cta:hover {
-            transform: scale(1.08); /* Efeito de zoom */
-            text-shadow: 0 0 12px rgba(250, 204, 21, 0.8); /* Iluminação sutil no texto */
-            border-color: #b592ff; /* Dá um leve brilho na borda também sem exagerar */
+            transform: scale(1.08); 
+            text-shadow: 0 0 12px rgba(250, 204, 21, 0.8); 
+            border-color: #b592ff;
+            background-color: rgba(157, 113, 250, 0.15); /* Ponto 3: Preenchimento leve roxo ao passar o mouse */
         }
 
         .final-layout {
@@ -453,8 +456,13 @@
         }
 
         .final-logo {
-            font-size: 4rem; /* Logo maior na seção final */
-            margin-bottom: 16px;
+            font-size: 4rem;
+            margin-bottom: 8px;
+            /* Ponto 4: Reaplicando o gradiente explicitamente aqui para garantir */
+            background: linear-gradient(135deg, var(--primary-purple) 30%, var(--primary-yellow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
 
         .final-text-content h2 {
@@ -469,7 +477,7 @@
         }
 
         .final-image-content {
-            flex: 1;
+            flex: 1.2; /* Permite que a imagem ocupe um pouco mais de espaço se necessário */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -477,8 +485,8 @@
 
         .final-image-content img {
             width: 100%;
-            max-width: 600px;
-            border-radius: 8px;
+            max-width: 750px; /* Ponto 2: Aumentado de 600px para 750px */
+            border-radius: 4px; /* Ponto 2: Bordas levemente arredondadas (imperceptível) */
             background-color: #ffffff;
             box-shadow: 0 10px 40px rgba(0,0,0,0.4);
             object-fit: cover;
@@ -514,19 +522,27 @@
             .data-visual { width: 40%; justify-content: flex-end; }
             .data-bottom-banner { margin-top: 90px; }
 
-            .how-section { padding: 60px 80px 120px; }
+            .how-section { padding: 60px 80px 100px; }
             .how-header h2 { font-size: 2.2rem; }
             .how-layout { flex-direction: row; align-items: center; gap: 80px; }
             .how-steps-container { width: 50%; }
             .how-image-container { width: 50%; justify-content: flex-end; }
 
-            .final-cta-section { padding: 60px 80px 140px; }
-            .final-layout { flex-direction: row; align-items: center; justify-content: space-between; gap: 80px; }
-            .final-text-content { width: 50%; }
+            .final-cta-section { padding: 40px 80px 140px; }
+            .final-layout { 
+                flex-direction: row; 
+                align-items: center; 
+                justify-content: space-between; 
+                gap: 120px; /* Ponto 4: Aumentado de 80px para separar mais o texto da imagem */
+            }
+            .final-text-content { width: 45%; }
             .final-text-content h2 { font-size: 2.5rem; max-width: 550px; }
-            .final-image-content { width: 50%; justify-content: flex-end; }
+            .final-image-content { width: 55%; justify-content: flex-end; }
         }
 
+        /* ==========================================
+           MEDIA QUERIES (MOBILE)
+           ========================================== */
         @media (max-width: 768px) {
             nav { display: none; }
             header { justify-content: center; text-align: center; }
@@ -537,6 +553,20 @@
             .step-title {
                 white-space: normal;
                 padding: 12px 24px;
+            }
+            
+            /* Reforçando o empilhamento seguro no mobile */
+            .how-layout, .final-layout {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .final-image-content img {
+                max-width: 100%;
+            }
+            
+            .final-button-container {
+                margin-bottom: 40px;
             }
         }
     </style>
@@ -724,12 +754,12 @@
         
         <div class="final-layout">
             <div class="final-text-content">
-                <div class="logo final-logo">Plast</div>
+                <div class="final-logo">Plast</div>
                 <h2 id="final-title">Empresas locais <strong>crescem</strong> mais <strong>quando trabalham</strong> com pessoas que conhecem a realidade da própria cidade.</h2>
             </div>
             
             <div class="final-image-content">
-                <!-- Substitua o src abaixo pela imagem/screenshot que você possui (ex: o print do HubSpot) -->
+                <!-- Substitua o src abaixo pela imagem/screenshot que você possui -->
                 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Resultados e Confiança" id="final-image">
             </div>
         </div>
