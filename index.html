@@ -236,7 +236,6 @@
         .data-section {
             max-width: 1300px;
             margin: 0 auto;
-            /* Aumentei o padding inferior para empurrar a 4ª dobra para baixo */
             padding: 40px 24px 140px; 
             width: 100%;
         }
@@ -267,7 +266,6 @@
         .data-bottom-banner {
             background: #faf6f0; color: #05010d; padding: 24px 32px; border-radius: 16px;
             font-weight: 600; font-size: 1rem; line-height: 1.5; text-align: center;
-            /* Margens ajustadas para não invadir a próxima dobra */
             margin-top: 60px; 
             margin-bottom: 20px;
             width: 100%; max-width: 900px; margin-left: auto; margin-right: auto;
@@ -280,15 +278,13 @@
         .how-section {
             max-width: 1300px;
             margin: 0 auto;
-            /* Mais respiro no topo para separar bem do banner branco */
             padding: 40px 24px 120px;
             width: 100%;
         }
 
-        /* Novo título adicionado conforme solicitado */
         .how-header {
             text-align: center;
-            margin-bottom: 145px;
+            margin-bottom: 120px; /* <--- MARGEM CORRIGIDA AQUI */
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
@@ -309,7 +305,6 @@
             gap: 60px;
         }
 
-        /* Lado esquerdo: Acordeão */
         .how-steps-container {
             flex: 1;
             display: flex;
@@ -323,7 +318,6 @@
             align-items: flex-start;
         }
 
-        /* Botão/Título com fundo sólido e elegante */
         .step-title {
             background: #15111c; 
             color: var(--text-muted);
@@ -344,14 +338,12 @@
             color: var(--text-light);
         }
 
-        /* Estado ativo do Título */
         .step-item.active .step-title {
             background: #251e33; 
             border-color: rgba(157, 113, 250, 0.4);
             color: var(--text-light);
         }
 
-        /* Corpo do texto */
         .step-body {
             display: flex;
             gap: 16px;
@@ -370,7 +362,6 @@
             margin-bottom: 24px;
         }
 
-        /* A linha em "L" do esboço */
         .step-l-shape {
             width: 24px;
             border-left: 2px solid var(--primary-purple);
@@ -388,7 +379,6 @@
             padding-top: 8px;
         }
 
-        /* Lado direito: Imagem (Sólida, sem brilho) */
         .how-image-container {
             flex: 1;
             display: flex;
@@ -413,6 +403,85 @@
             height: 100%;
             object-fit: cover;
             transition: opacity 0.3s ease;
+        }
+
+        /* ==========================================
+           FINAL CTA SECTION (5ª Dobra)
+           ========================================== */
+        .final-cta-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 24px 120px;
+            width: 100%;
+        }
+
+        .final-button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 80px;
+        }
+
+        .btn-final-cta {
+            background-color: transparent;
+            border: 2px solid var(--primary-purple);
+            color: var(--primary-yellow);
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 16px 80px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-final-cta:hover {
+            transform: scale(1.08); /* Efeito de zoom */
+            text-shadow: 0 0 12px rgba(250, 204, 21, 0.8); /* Iluminação sutil no texto */
+            border-color: #b592ff; /* Dá um leve brilho na borda também sem exagerar */
+        }
+
+        .final-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .final-text-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .final-logo {
+            font-size: 4rem; /* Logo maior na seção final */
+            margin-bottom: 16px;
+        }
+
+        .final-text-content h2 {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .final-text-content h2 strong {
+            font-weight: 700;
+        }
+
+        .final-image-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .final-image-content img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            object-fit: cover;
         }
 
         /* ==========================================
@@ -450,6 +519,12 @@
             .how-layout { flex-direction: row; align-items: center; gap: 80px; }
             .how-steps-container { width: 50%; }
             .how-image-container { width: 50%; justify-content: flex-end; }
+
+            .final-cta-section { padding: 60px 80px 140px; }
+            .final-layout { flex-direction: row; align-items: center; justify-content: space-between; gap: 80px; }
+            .final-text-content { width: 50%; }
+            .final-text-content h2 { font-size: 2.5rem; max-width: 550px; }
+            .final-image-content { width: 50%; justify-content: flex-end; }
         }
 
         @media (max-width: 768px) {
@@ -586,7 +661,6 @@
             </div>
         </div>
         
-        <!-- O BANNER BRANCO COM AS MARGENS AJUSTADAS -->
         <div class="data-bottom-banner" id="data-banner">
             Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?
         </div>
@@ -595,16 +669,12 @@
     <!-- QUARTA DOBRA (COMO FUNCIONA / ACORDEÃO) -->
     <section class="how-section" id="how-section-block">
         
-        <!-- NOVO TÍTULO ADICIONADO AQUI -->
         <div class="how-header">
             <h2 id="how-main-title">Uma plataforma que não vende humanos, mas sim uma parceria local, com quem é de sua cidade e que fale a língua do seu público.</h2>
         </div>
 
         <div class="how-layout">
-            <!-- Lista interativa esquerda -->
             <div class="how-steps-container" id="how-steps-container">
-                
-                <!-- Passo 1 -->
                 <div class="step-item active" data-step="0">
                     <button class="step-title" id="how-t1">Encontre o criador ideal</button>
                     <div class="step-body">
@@ -613,7 +683,6 @@
                     </div>
                 </div>
 
-                <!-- Passo 2 -->
                 <div class="step-item" data-step="1">
                     <button class="step-title" id="how-t2">Escolha com confiança</button>
                     <div class="step-body">
@@ -622,7 +691,6 @@
                     </div>
                 </div>
 
-                <!-- Passo 3 -->
                 <div class="step-item" data-step="2">
                     <button class="step-title" id="how-t3">Gerencie tudo em um só lugar</button>
                     <div class="step-body">
@@ -631,7 +699,6 @@
                     </div>
                 </div>
 
-                <!-- Passo 4 -->
                 <div class="step-item" data-step="3">
                     <button class="step-title" id="how-t4">Descubra o que realmente funciona</button>
                     <div class="step-body">
@@ -639,14 +706,31 @@
                         <p class="step-text" id="how-d4">Tenha acesso a relatórios detalhados sobre o desempenho dos conteúdos. Entenda o que atrai seu cliente final e escale seus resultados.</p>
                     </div>
                 </div>
-
             </div>
 
-            <!-- Imagem Direita -->
             <div class="how-image-container">
                 <div class="how-image-box">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Demonstração do Passo" id="step-display-image">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUINTA DOBRA (CALL TO ACTION FINAL) -->
+    <section class="final-cta-section" id="final-cta-block">
+        <div class="final-button-container">
+            <button class="btn-final-cta" id="final-btn">Começar</button>
+        </div>
+        
+        <div class="final-layout">
+            <div class="final-text-content">
+                <div class="logo final-logo">Plast</div>
+                <h2 id="final-title">Empresas locais <strong>crescem</strong> mais <strong>quando trabalham</strong> com pessoas que conhecem a realidade da própria cidade.</h2>
+            </div>
+            
+            <div class="final-image-content">
+                <!-- Substitua o src abaixo pela imagem/screenshot que você possui (ex: o print do HubSpot) -->
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Resultados e Confiança" id="final-image">
             </div>
         </div>
     </section>
@@ -676,7 +760,7 @@
                     c2Title: "Talentos em<br>sua cidade", c2Text: "Filtre criadores por localização, nicho, estilo de conteúdo e público para encontrar quem realmente combina com a sua empresa.", c2Foot: "Match perfeito entre marca e criador",
                     c3Title: "Conteúdo que<br>conecta", c3Text: "Seu cliente esquece anúncios. Mas lembra de histórias e pessoas. Conteúdos autênticos criam identificação e tornam sua empresa mais lembrada.", c3Foot: "Mais conexão, mais confiança...",
 
-                    // --- Dobra 3 (DADOS) ---
+                    // --- Dobra 3 ---
                     dataTitle: "Não acredite apenas na nossa palavra. Os <span class='highlight'>dados mostram</span> por quê.",
                     dataSub: "Os <span class='highlight'>consumidores mudaram</span> a forma como descobrem empresas e decidem suas compras.",
                     s1Icon: "✍️", s1Val: "2,5x", s1Desc: "Conteúdos gerados por usuários são percebidos como mais autênticos do que conteúdos produzidos pelas próprias marcas, ou influenciadores muito grandes.", s1Src: "Fonte: Nielsen / Bazaarvoices",
@@ -686,18 +770,23 @@
                     overlayColor: "linear-gradient(180deg, #facc15 0%, rgba(250, 204, 21, 0) 100%)",
                     dataBanner: "Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?",
 
-                    // --- Dobra 4 (COMO FUNCIONA / ACORDEÃO) ---
+                    // --- Dobra 4 ---
                     howMainTitle: "Uma plataforma que não vende humanos, mas sim uma parceria local, com quem é de sua cidade e que fale a língua do seu público.",
                     hT1: "Encontre o criador ideal", hD1: "Utilize nossa inteligência artificial para filtrar e encontrar os criadores de conteúdo mais próximos da sua região. Garantimos o match perfeito com a identidade e os valores da sua marca.",
                     hT2: "Escolha com confiança", hD2: "Analise o portfólio completo, métricas de engajamento e o histórico de campanhas de cada criador antes de fechar negócio. Transparência total para a sua decisão.",
                     hT3: "Gerencie tudo em um só lugar", hD3: "Aprove propostas, acompanhe a produção, alinhe roteiros e realize pagamentos de forma 100% segura sem precisar sair da plataforma.",
                     hT4: "Descubra o que realmente funciona", hD4: "Tenha acesso a relatórios detalhados sobre o desempenho dos conteúdos. Entenda o que atrai seu cliente final e escale seus resultados.",
                     howImages: [
-                        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", // img busca
-                        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80", // img perfil/escolha
-                        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", // img gestao/dashboard
-                        "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=800&q=80"  // img resultados
-                    ]
+                        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=800&q=80"
+                    ],
+
+                    // --- Dobra 5 (CTA Final) ---
+                    finalBtnText: "Começar",
+                    finalTitle: "Empresas locais <strong>crescem</strong> mais <strong>quando trabalham</strong> com pessoas que conhecem a realidade da própria cidade.",
+                    finalImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
                 },
                 criador: {
                     // --- Dobra 1 ---
@@ -718,7 +807,7 @@
                     c2Title: "Evolua seu<br>Avatar", c2Text: "Ganhe pontos de experiência (XP) a cada conteúdo aprovado. Suba de nível e desbloqueie parcerias mais exclusivas e lucrativas.", c2Foot: "Seja um Top Player",
                     c3Title: "Recompensas<br>Reais", c3Text: "Troque seus pontos e conquistas por dinheiro na conta, produtos, ou vouchers incríveis das lojas parceiras da sua cidade.", c3Foot: "Ganhe de verdade",
 
-                    // --- Dobra 3 (DADOS) ---
+                    // --- Dobra 3 ---
                     dataTitle: "O mercado mudou. Seu <span class='highlight-purple'>talento vale</span> muito mais do que likes.",
                     dataSub: "As marcas locais estão <span class='highlight-purple'>buscando</span> criadores autênticos como você para se conectarem com o público.",
                     s1Icon: "📱", s1Val: "UGC", s1Desc: "Marcas estão investindo pesado em User Generated Content (Conteúdo Gerado pelo Usuário). Sua autenticidade é a nova moeda.", s1Src: "Oportunidade real",
@@ -728,60 +817,54 @@
                     overlayColor: "linear-gradient(180deg, #9d71fa 0%, rgba(157, 113, 250, 0) 100%)", 
                     dataBanner: "A era de criar conteúdo de graça acabou. Jogue o jogo onde você também sai ganhando e seja recompensado pelo seu talento.",
 
-                    // --- Dobra 4 (COMO FUNCIONA / ACORDEÃO) ---
+                    // --- Dobra 4 ---
                     howMainTitle: "Uma plataforma que não te trata como um número. Feche parcerias locais com marcas da sua cidade e fale a língua do seu público.",
                     hT1: "Encontre as melhores missões", hD1: "Receba recomendações exclusivas de marcas da sua cidade que buscam exatamente o seu perfil e estilo de criação. As oportunidades vêm até você.",
                     hT2: "Crie com liberdade", hD2: "Receba os briefings detalhados e use sua autenticidade para gravar. Você decide como expressar a mensagem da marca, mantendo a sua essência.",
                     hT3: "Gerencie suas parcerias", hD3: "Acompanhe o status das suas missões, edições solicitadas e os prazos de entrega em um painel gamer simples e organizado.",
                     hT4: "Receba suas recompensas", hD4: "Conteúdo aprovado é dinheiro na conta! Acumule XP, suba de nível e resgate seus pagamentos de forma rápida direto pela plataforma.",
                     howImages: [
-                        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80", // img missoes
-                        "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80", // img gravacao
-                        "https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=800&q=80", // img painel
-                        "https://images.unsplash.com/photo-1580519542036-ed47f3e42d1b?auto=format&fit=crop&w=800&q=80"  // img dinheiro/recompensa
-                    ]
+                        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1580519542036-ed47f3e42d1b?auto=format&fit=crop&w=800&q=80"
+                    ],
+
+                    // --- Dobra 5 (CTA Final) ---
+                    finalBtnText: "Começar Missão",
+                    finalTitle: "Marcas locais <strong>crescem</strong> mais <strong>quando trabalham</strong> com criadores autênticos como você.",
+                    finalImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80"
                 }
             };
 
             const toggleOptions = document.querySelectorAll(".toggle-option");
             const modeToggle = document.getElementById("mode-toggle");
-            let currentMode = "empresa"; // Guarda o estado atual
+            let currentMode = "empresa";
 
-            // Elementos para animar no switch principal
             const elementsToAnimate = [
                 "#hero-text-block", "#hero-badge", "#hero-floating-card", "#hero-image-frame",
                 "#features-header-block", ".feature-card",
                 "#data-section-block .data-content", "#data-img", "#data-banner",
-                "#how-main-title", "#how-steps-container", "#step-display-image"
+                "#how-main-title", "#how-steps-container", "#step-display-image",
+                "#final-cta-block .final-button-container", "#final-cta-block .final-layout"
             ];
 
-            // ----------------------------------------------------
-            // LÓGICA DO ACORDEÃO (QUARTA DOBRA)
-            // ----------------------------------------------------
+            // Acordeão
             const steps = document.querySelectorAll('.step-item');
             const stepDisplayImage = document.getElementById('step-display-image');
 
             steps.forEach(step => {
                 const titleBtn = step.querySelector('.step-title');
                 titleBtn.addEventListener('click', () => {
-                    // Se já estiver ativo, não faz nada
                     if (step.classList.contains('active')) return;
-
-                    // Remove classe de todos
                     steps.forEach(s => s.classList.remove('active'));
-                    
-                    // Adiciona no clicado
                     step.classList.add('active');
-
-                    // Pega o índice do passo clicado (0 a 3)
                     const stepIndex = step.getAttribute('data-step');
 
-                    // Transição da imagem lateral
                     gsap.to(stepDisplayImage, {
                         opacity: 0,
                         duration: 0.2,
                         onComplete: () => {
-                            // Troca a URL baseada no modo atual e passo clicado
                             stepDisplayImage.src = data[currentMode].howImages[stepIndex];
                             gsap.to(stepDisplayImage, { opacity: 1, duration: 0.2 });
                         }
@@ -789,15 +872,13 @@
                 });
             });
 
-            // ----------------------------------------------------
-            // LÓGICA DO TOGGLE PRINCIPAL (EMPRESA / CRIADOR)
-            // ----------------------------------------------------
+            // Toggle Principal
             toggleOptions.forEach(option => {
                 option.addEventListener("click", () => {
                     const mode = option.getAttribute("data-mode");
                     if(option.classList.contains("active")) return;
                     
-                    currentMode = mode; // Atualiza variável global de estado
+                    currentMode = mode;
 
                     toggleOptions.forEach(opt => opt.classList.remove("active"));
                     option.classList.add("active");
@@ -851,7 +932,7 @@
                             document.getElementById("pill-overlay").style.background = d.overlayColor;
                             document.getElementById("data-banner").textContent = d.dataBanner;
 
-                            // 4ª Dobra (Acordeão e Título)
+                            // 4ª Dobra
                             document.getElementById("how-main-title").innerHTML = d.howMainTitle;
                             document.getElementById("how-t1").textContent = d.hT1;
                             document.getElementById("how-d1").textContent = d.hD1;
@@ -861,13 +942,16 @@
                             document.getElementById("how-d3").textContent = d.hD3;
                             document.getElementById("how-t4").textContent = d.hT4;
                             document.getElementById("how-d4").textContent = d.hD4;
-
-                            // Ao trocar o modo principal, resetamos o acordeão para o Passo 1 (index 0)
+                            
                             steps.forEach(s => s.classList.remove('active'));
                             steps[0].classList.add('active');
-                            stepDisplayImage.src = d.howImages[0]; // Volta a primeira imagem do novo array
+                            stepDisplayImage.src = d.howImages[0];
 
-                            // Fade In de tudo
+                            // 5ª Dobra
+                            document.getElementById("final-btn").textContent = d.finalBtnText;
+                            document.getElementById("final-title").innerHTML = d.finalTitle;
+                            document.getElementById("final-image").src = d.finalImage;
+
                             gsap.to(elementsToAnimate, { opacity: 1, y: 0, duration: 0.3, stagger: 0.03 });
                         }
                     });
