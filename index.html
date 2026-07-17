@@ -62,12 +62,15 @@
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: -1px;
-            background: linear-gradient(135deg, var(--primary-purple) 30%, var(--primary-yellow) 100%);
+            /* Aplicando o degradê correto */
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-yellow) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
             display: inline-block;
         }
 
@@ -278,7 +281,8 @@
         .how-section {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 40px 24px 80px; 
+            /* AUMENTADO O ESPAÇAMENTO INFERIOR (padding-bottom) PARA EVITAR INVASÃO */
+            padding: 40px 24px 140px; 
             width: 100%;
         }
 
@@ -411,8 +415,8 @@
         .final-cta-section {
             max-width: 1300px;
             margin: 0 auto;
-            margin-top: 0;
-            padding: 0px 24px 120px; 
+            /* ADICIONADO ESPAÇAMENTO SUPERIOR (padding-top) PARA RESPIRO DA DOBRA ANTERIOR */
+            padding: 60px 24px 120px; 
             width: 100%;
             clear: both;
         }
@@ -420,17 +424,14 @@
         .final-button-container {
             display: flex;
             justify-content: center;
-            /* Margem ajustada para ficar igual à Imagem 2 */
-            margin-bottom: 80px; 
+            margin-bottom: 100px; /* Mais espaço abaixo do botão começar */
             padding-top: 0;
         }
 
         .btn-final-cta {
             background-color: transparent;
-            /* Borda sutil cinza/clara, não roxa */
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--primary-yellow);
-            /* Fonte um pouco menor para combinar com a imagem */
             font-size: 1.1rem;
             font-weight: 500;
             padding: 12px 48px;
@@ -455,24 +456,24 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            /* Espaçamento interno entre Logo e Texto */
             gap: 24px;
         }
 
         .final-logo {
-            /* Logo bem grande como na imagem 2 */
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: 700; 
             letter-spacing: -2px;
-            background: linear-gradient(135deg, var(--primary-purple) 30%, var(--primary-yellow) 100%);
+            /* DEGRADÊ APLICADO COM FALLBACK PARA GARANTIR VISIBILIDADE */
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-yellow) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
             display: inline-block;
             margin-bottom: 0;
         }
 
         .final-text-content h2 {
-            /* Tamanho de fonte reduzido para não brigar com a imagem grande */
             font-size: 1.4rem;
             line-height: 1.6;
             font-weight: 400;
@@ -490,7 +491,6 @@
             align-items: center;
         }
 
-        /* O container que faz a borda amarela com espaço */
         .final-image-wrapper {
             border: 1px solid var(--primary-yellow);
             padding: 16px;
@@ -538,22 +538,21 @@
             .data-visual { width: 40%; justify-content: flex-end; }
             .data-bottom-banner { margin-top: 90px; }
 
-            .how-section { padding: 60px 80px 80px; } 
+            /* Espaçamentos garantidos no Desktop */
+            .how-section { padding: 60px 80px 160px; } 
             .how-header h2 { font-size: 2.2rem; }
             .how-layout { flex-direction: row; align-items: center; gap: 80px; }
             .how-steps-container { width: 50%; }
             .how-image-container { width: 50%; justify-content: flex-end; }
 
-            /* Ajuste exato das proporções da Imagem 2 */
-            .final-cta-section { padding: 0px 80px 140px; }
+            .final-cta-section { padding: 60px 80px 140px; }
             .final-layout { 
                 flex-direction: row; 
                 align-items: center; 
                 justify-content: space-between; 
-                gap: 60px; /* Reduzido para não quebrar o flex */
+                gap: 60px;
             }
             
-            /* Texto ocupa um pouco menos espaço, Imagem ocupa mais */
             .final-text-content { width: 40%; gap: 16px; }
             .final-text-content h2 { font-size: 1.5rem; max-width: 100%; }
             
@@ -778,7 +777,6 @@
             </div>
             
             <div class="final-image-content">
-                <!-- Wrapper adicionado para fazer a borda amarela como na Imagem 2 -->
                 <div class="final-image-wrapper">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Resultados e Confiança" id="final-image">
                 </div>
