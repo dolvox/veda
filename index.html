@@ -65,7 +65,6 @@
             font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: -1px;
-            /* Aplicando o degradê correto */
             background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-yellow) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -136,6 +135,52 @@
             font-weight: 500; cursor: pointer; transition: var(--transition-smooth);
         }
         .btn-register:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
+
+        /* ==========================================
+           MODAL DE LOGIN (NOVO)
+           ========================================== */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 1, 13, 0.8); backdrop-filter: blur(5px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 9999; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { 
+            opacity: 1; pointer-events: auto; 
+        }
+        .modal-content {
+            background: #15111c; border: 1px solid rgba(157, 113, 250, 0.3);
+            border-radius: 16px; padding: 40px; width: 90%; max-width: 400px;
+            position: relative; transform: translateY(20px); transition: transform 0.3s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+        .modal-overlay.active .modal-content { 
+            transform: translateY(0); 
+        }
+        .close-btn {
+            position: absolute; top: 15px; right: 15px; background: transparent;
+            border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;
+            line-height: 1;
+        }
+        .close-btn:hover { color: #ffffff; }
+        .modal-content h3 { 
+            margin-bottom: 24px; text-align: center; font-size: 1.5rem; color: var(--text-light); 
+        }
+        .input-group { 
+            margin-bottom: 16px; text-align: left; 
+        }
+        .input-group label { 
+            display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px; 
+        }
+        .input-group input {
+            width: 100%; padding: 12px 16px; border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light); outline: none; transition: border 0.3s ease;
+        }
+        .input-group input:focus { 
+            border-color: var(--primary-purple); 
+        }
 
         /* ==========================================
            HERO SECTION (1ª Dobra)
@@ -281,7 +326,6 @@
         .how-section {
             max-width: 1300px;
             margin: 0 auto;
-            /* AUMENTADO O ESPAÇAMENTO INFERIOR (padding-bottom) PARA EVITAR INVASÃO */
             padding: 40px 24px 140px; 
             width: 100%;
         }
@@ -417,7 +461,6 @@
         .final-cta-section {
             max-width: 1300px;
             margin: 0 auto;
-            /* ADICIONADO ESPAÇAMENTO SUPERIOR (padding-top) PARA RESPIRO DA DOBRA ANTERIOR */
             padding: 60px 24px 120px; 
             width: 100%;
             clear: both;
@@ -426,7 +469,7 @@
         .final-button-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 100px; /* Mais espaço abaixo do botão começar */
+            margin-bottom: 100px; 
             padding-top: 0;
         }
 
@@ -465,7 +508,6 @@
             font-size: 5rem;
             font-weight: 700; 
             letter-spacing: -2px;
-            /* DEGRADÊ APLICADO COM FALLBACK PARA GARANTIR VISIBILIDADE */
             background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-yellow) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -540,7 +582,6 @@
             .data-visual { width: 40%; justify-content: flex-end; }
             .data-bottom-banner { margin-top: 90px; }
 
-            /* Espaçamentos garantidos no Desktop */
             .how-section { padding: 60px 80px 160px; } 
             .how-header h2 { font-size: 2.2rem; }
             .how-layout { flex-direction: row; align-items: center; gap: 80px; }
@@ -786,6 +827,25 @@
         </div>
     </section>
 
+    <!-- MODAL DE LOGIN (NOVO) -->
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn">&times;</button>
+            <h3 id="modal-title">Acessar Conta</h3>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Entrar</button>
+            </form>
+        </div>
+    </div>
+
     <!-- SCRIPT DE INTERATIVIDADE E ANIMAÇÃO -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -793,7 +853,6 @@
             // DADOS DINÂMICOS PARA MODO EMPRESA E CRIADOR
             const data = {
                 empresa: {
-                    // --- Dobra 1 ---
                     badge: "👥 Conecte. Colabore. Cresça.",
                     title: "Se <span class='highlight'>conecte</span> com diversos criativos e <span class='highlight'>influencers</span> da sua <span class='highlight'>cidade</span>.",
                     subtitle: "Aumente sua escala de <span class='highlight-purple'>branding</span> da empresa em toda a cidade e leve sua marca para mais pessoas, todos os dias.",
@@ -802,16 +861,12 @@
                     cardTitle: "Mais visibilidade",
                     cardSub: "+ alcance • + conexões • + resultados",
                     image: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=600&auto=format&fit=crop",
-                    
-                    // --- Dobra 2 ---
                     featBadge: "🌟 Por que escolher a Plast?",
                     featTitle: "Marketing de influência não é só seguidores. Mas sim em criar <span class='highlight-purple'>identificação</span> com quem compra de <span class='highlight'>você.</span>",
                     featSub: "Os melhores conteúdos não começam com uma câmera. Começam com a <span class='highlight'>pessoa certa.</span>",
                     c1Title: "Economia<br>de tempo", c1Text: "Nós reunimos e organizamos os criadores da sua cidade para que você encontre as pessoas certas sem precisar passar horas procurando no Instagram ou pedindo indicações.", c1Foot: "+ Tempo para o que realmente importa",
                     c2Title: "Talentos em<br>sua cidade", c2Text: "Filtre criadores por localização, nicho, estilo de conteúdo e público para encontrar quem realmente combina com a sua empresa.", c2Foot: "Match perfeito entre marca e criador",
                     c3Title: "Conteúdo que<br>conecta", c3Text: "Seu cliente esquece anúncios. Mas lembra de histórias e pessoas. Conteúdos autênticos criam identificação e tornam sua empresa mais lembrada.", c3Foot: "Mais conexão, mais confiança...",
-
-                    // --- Dobra 3 ---
                     dataTitle: "Não acredite apenas na nossa palavra. Os <span class='highlight'>dados mostram</span> por quê.",
                     dataSub: "Os <span class='highlight'>consumidores mudaram</span> a forma como descobrem empresas e decidem suas compras.",
                     s1Icon: "✍️", s1Val: "2,5x", s1Desc: "Conteúdos gerados por usuários são percebidos como mais autênticos do que conteúdos produzidos pelas próprias marcas, ou influenciadores muito grandes.", s1Src: "Fonte: Nielsen / Bazaarvoices",
@@ -820,8 +875,6 @@
                     dataImg: "https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=600&auto=format&fit=crop",
                     overlayColor: "linear-gradient(180deg, #facc15 0%, rgba(250, 204, 21, 0) 100%)",
                     dataBanner: "Os dados mostram uma mudança clara: as pessoas confiam em pessoas mais do que em propaganda. E o seu cliente? O que você acha?",
-
-                    // --- Dobra 4 ---
                     howMainTitle: "Uma plataforma que não vende humanos, mas sim uma parceria local, com quem é de sua cidade e que fale a língua do seu público.",
                     hT1: "Encontre o criador ideal", hD1: "Utilize nossa inteligência artificial para filtrar e encontrar os criadores de conteúdo mais próximos da sua região. Garantimos o match perfeito com a identidade e os valores da sua marca.",
                     hT2: "Escolha com confiança", hD2: "Analise o portfólio completo, métricas de engajamento e o histórico de campanhas de cada criador antes de fechar negócio. Transparência total para a sua decisão.",
@@ -833,14 +886,11 @@
                         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
                         "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=800&q=80"
                     ],
-
-                    // --- Dobra 5 (CTA Final) ---
                     finalBtnText: "Começar",
                     finalTitle: "Empresas locais <strong>crescem</strong> mais <strong>quando trabalham</strong> com pessoas que conhecem a realidade da própria cidade.",
                     finalImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
                 },
                 criador: {
-                    // --- Dobra 1 ---
                     badge: "🎮 Jogue. Crie. Ganhe.",
                     title: "O <span class='highlight'>jogo mudou</span>. Seu dia a dia agora é uma <span class='highlight'>Missão</span>.",
                     subtitle: "Crie conteúdos reais para marcas locais, evolua seu <span class='highlight-purple'>avatar</span> e ganhe recompensas reais em dinheiro ou prêmios.",
@@ -849,16 +899,12 @@
                     cardTitle: "Sua Jornada Gamer",
                     cardSub: "Complete missões • Ganhe XP • Resgate Prêmios",
                     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop",
-
-                    // --- Dobra 2 ---
                     featBadge: "🚀 Eleve seu nível",
                     featTitle: "Transforme sua criatividade em <span class='highlight-purple'>recompensas</span>. O seu talento vale <span class='highlight'>muito.</span>",
                     featSub: "Pare de criar conteúdo de graça. Conecte-se com as marcas certas e seja pago pelo que você ama fazer.",
                     c1Title: "Missões<br>Locais", c1Text: "Receba propostas de marcas da sua região diretamente no seu painel. Aceite as missões que combinam com seu estilo e dispare sua criatividade.", c1Foot: "Jogue no seu ritmo",
                     c2Title: "Evolua seu<br>Avatar", c2Text: "Ganhe pontos de experiência (XP) a cada conteúdo aprovado. Suba de nível e desbloqueie parcerias mais exclusivas e lucrativas.", c2Foot: "Seja um Top Player",
                     c3Title: "Recompensas<br>Reais", c3Text: "Troque seus pontos e conquistas por dinheiro na conta, produtos, ou vouchers incríveis das lojas parceiras da sua cidade.", c3Foot: "Ganhe de verdade",
-
-                    // --- Dobra 3 ---
                     dataTitle: "O mercado mudou. Seu <span class='highlight-purple'>talento vale</span> muito mais do que likes.",
                     dataSub: "As marcas locais estão <span class='highlight-purple'>buscando</span> criadores autênticos como você para se conectarem com o público.",
                     s1Icon: "📱", s1Val: "UGC", s1Desc: "Marcas estão investindo pesado em User Generated Content (Conteúdo Gerado pelo Usuário). Sua autenticidade é a nova moeda.", s1Src: "Oportunidade real",
@@ -867,8 +913,6 @@
                     dataImg: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop", 
                     overlayColor: "linear-gradient(180deg, #9d71fa 0%, rgba(157, 113, 250, 0) 100%)", 
                     dataBanner: "A era de criar conteúdo de graça acabou. Jogue o jogo onde você também sai ganhando e seja recompensado pelo seu talento.",
-
-                    // --- Dobra 4 ---
                     howMainTitle: "Uma plataforma que não te trata como um número. Feche parcerias locais com marcas da sua cidade e fale a língua do seu público.",
                     hT1: "Encontre as melhores missões", hD1: "Receba recomendações exclusivas de marcas da sua cidade que buscam exatamente o seu perfil e estilo de criação. As oportunidades vêm até você.",
                     hT2: "Crie com liberdade", hD2: "Receba os briefings detalhados e use sua autenticidade para gravar. Você decide como expressar a mensagem da marca, mantendo a sua essência.",
@@ -880,8 +924,6 @@
                         "https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=800&q=80",
                         "https://images.unsplash.com/photo-1580519542036-ed47f3e42d1b?auto=format&fit=crop&w=800&q=80"
                     ],
-
-                    // --- Dobra 5 (CTA Final) ---
                     finalBtnText: "Começar Missão",
                     finalTitle: "Marcas locais <strong>crescem</strong> mais <strong>quando trabalham</strong> com criadores autênticos como você.",
                     finalImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80"
@@ -891,6 +933,32 @@
             const toggleOptions = document.querySelectorAll(".toggle-option");
             const modeToggle = document.getElementById("mode-toggle");
             let currentMode = "empresa";
+
+            // LÓGICA DO MODAL DE LOGIN (NOVO)
+            const loginBtn = document.querySelector('.btn-login');
+            const loginModal = document.getElementById('login-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const modalTitle = document.getElementById('modal-title');
+
+            // Abrir Modal
+            loginBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Muda o título baseado no modo (empresa ou criador)
+                modalTitle.textContent = currentMode === 'empresa' ? 'Acesso Empresa' : 'Acesso Criador';
+                loginModal.classList.add('active');
+            });
+
+            // Fechar Modal no X
+            closeModalBtn.addEventListener('click', () => {
+                loginModal.classList.remove('active');
+            });
+
+            // Fechar Modal clicando fora da caixa
+            loginModal.addEventListener('click', (e) => {
+                if (e.target === loginModal) {
+                    loginModal.classList.remove('active');
+                }
+            });
 
             const elementsToAnimate = [
                 "#hero-text-block", "#hero-badge", "#hero-floating-card", "#hero-image-frame",
